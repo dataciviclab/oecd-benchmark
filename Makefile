@@ -55,6 +55,12 @@ run-%:
 pipeline: test run
 	@echo "✅ Pipeline complete"
 
+# --- Data acquisition --------------------------------------------------------
+
+.PHONY: generate-fua-lookup
+generate-fua-lookup:
+	$(PYTHON) scripts/generate_fua_lookup.py
+
 # --- Status / diagnostics ----------------------------------------------------
 
 .PHONY: status
