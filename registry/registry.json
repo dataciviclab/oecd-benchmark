@@ -1,0 +1,1749 @@
+{
+  "schema_version": 1,
+  "repo": "oecd-benchmark",
+  "source_repo": "dataciviclab/oecd-benchmark",
+  "updated_at": "2026-09-29",
+  "datasets": [
+    {
+      "slug": "oecd_air_emissions",
+      "name": "Oecd Air Emissions",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2024
+      },
+      "tags": [
+        "ambiente",
+        "emissioni",
+        "co2",
+        "inquinamento",
+        "oecd"
+      ],
+      "category": "ambiente",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "inquinante",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "inquinante_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_air_emissions/2026/oecd_air_emissions_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_air_emissions__mart_emissioni_italia"
+      ]
+    },
+    {
+      "slug": "oecd_education_attainment",
+      "name": "Oecd Education Attainment",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "educazione",
+        "istruzione",
+        "oecd"
+      ],
+      "category": "educazione",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "livello_territoriale",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "tipo_territorio",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "eta",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "eta_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "sesso",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "sesso_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "educazione",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "educazione_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_education_attainment/2026/oecd_education_attainment_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_education_attainment__mart_italia",
+        "oecd_education_attainment__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_forest",
+      "name": "Oecd Forest",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2024
+      },
+      "tags": [
+        "ambiente",
+        "foreste",
+        "boschi",
+        "oecd"
+      ],
+      "category": "ambiente",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "indicatore",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "indicatore_code"
+        },
+        {
+          "name": "indicatore_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_forest/2026/oecd_forest_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_forest__mart_forest_italia"
+      ]
+    },
+    {
+      "slug": "oecd_fua_economy",
+      "name": "Oecd Fua Economy",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "economia",
+        "pil",
+        "produttivita",
+        "citta",
+        "fua",
+        "oecd"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "fua_code",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "citta",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "livello",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_fua_economy/2026/oecd_fua_economy_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_fua_economy__mart_italia",
+        "oecd_fua_economy__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_fua_ghg",
+      "name": "Oecd Fua Ghg",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2005,
+        "end": 2023
+      },
+      "tags": [
+        "ambiente",
+        "emissioni",
+        "co2",
+        "citta",
+        "fua",
+        "oecd"
+      ],
+      "category": "ambiente",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "fua_code",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "citta",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "pollutante",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "pollutante_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "livello",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_fua_ghg/2026/oecd_fua_ghg_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_fua_ghg__mart_italia",
+        "oecd_fua_ghg__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_green_transition",
+      "name": "Oecd Green Transition",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2024
+      },
+      "tags": [
+        "ambiente",
+        "transizione-verde",
+        "energie-rinnovabili",
+        "oecd"
+      ],
+      "category": "ambiente",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "indicatore",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "indicatore_code"
+        },
+        {
+          "name": "indicatore_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_green_transition/2026/oecd_green_transition_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_green_transition__mart_green_transition_italia"
+      ]
+    },
+    {
+      "slug": "oecd_health_expenditure",
+      "name": "Oecd Health Expenditure",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "salute",
+        "spesa-sanitaria",
+        "oecd"
+      ],
+      "category": "salute",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "financing_scheme",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "financing_scheme_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "function_code",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "function_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "provider",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "provider_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_health_expenditure/2026/oecd_health_expenditure_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_health_expenditure__mart_italia",
+        "oecd_health_expenditure__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_regional_gdp",
+      "name": "Oecd Regional Gdp",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "economia",
+        "pil",
+        "regionale",
+        "oecd"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "livello_territoriale",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "tipo_territorio",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "attivita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "attivita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "prezzi",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "prezzi_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_regional_gdp/2026/oecd_regional_gdp_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_regional_gdp__mart_italia",
+        "oecd_regional_gdp__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_tax_revenue",
+      "name": "Oecd Tax Revenue",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "fisco",
+        "entrate",
+        "tasse",
+        "oecd"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "settore",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "settore_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_tax_revenue/2026/oecd_tax_revenue_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_tax_revenue__mart_italia",
+        "oecd_tax_revenue__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_taxing_wages",
+      "name": "Oecd Taxing Wages",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2023
+      },
+      "tags": [
+        "fisco",
+        "cuneo-fiscale",
+        "lavoro",
+        "oecd"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "tipo_famiglia",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "tipo_famiglia_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "reddito_principale",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "reddito_principale_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_taxing_wages/2026/oecd_taxing_wages_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_taxing_wages__mart_italia",
+        "oecd_taxing_wages__mart_benchmark"
+      ]
+    },
+    {
+      "slug": "oecd_unemployment",
+      "name": "Oecd Unemployment",
+      "description": "",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 2000,
+        "end": 2025
+      },
+      "tags": [
+        "lavoro",
+        "disoccupazione",
+        "oecd"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "mese_str",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "misura_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "sesso",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "sesso_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "eta",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "eta_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "attivita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_unemployment/2026/oecd_unemployment_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_unemployment__mart_italia",
+        "oecd_unemployment__mart_benchmark"
+      ]
+    }
+  ],
+  "marts": [
+    {
+      "slug": "oecd_air_emissions__mart_emissioni_italia",
+      "dataset": "oecd_air_emissions",
+      "table": "mart_emissioni_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_air_emissions/2026/mart_emissioni_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_education_attainment__mart_benchmark",
+      "dataset": "oecd_education_attainment",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_education_attainment/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_education_attainment__mart_italia",
+      "dataset": "oecd_education_attainment",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_education_attainment/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_forest__mart_forest_italia",
+      "dataset": "oecd_forest",
+      "table": "mart_forest_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_forest/2026/mart_forest_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_fua_economy__mart_benchmark",
+      "dataset": "oecd_fua_economy",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_fua_economy/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_fua_economy__mart_italia",
+      "dataset": "oecd_fua_economy",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_fua_economy/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_fua_ghg__mart_benchmark",
+      "dataset": "oecd_fua_ghg",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_fua_ghg/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_fua_ghg__mart_italia",
+      "dataset": "oecd_fua_ghg",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_fua_ghg/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_green_transition__mart_green_transition_italia",
+      "dataset": "oecd_green_transition",
+      "table": "mart_green_transition_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_green_transition/2026/mart_green_transition_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_health_expenditure__mart_benchmark",
+      "dataset": "oecd_health_expenditure",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_health_expenditure/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_health_expenditure__mart_italia",
+      "dataset": "oecd_health_expenditure",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_health_expenditure/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_regional_gdp__mart_benchmark",
+      "dataset": "oecd_regional_gdp",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_regional_gdp/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_regional_gdp__mart_italia",
+      "dataset": "oecd_regional_gdp",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_regional_gdp/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_tax_revenue__mart_benchmark",
+      "dataset": "oecd_tax_revenue",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_tax_revenue/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_tax_revenue__mart_italia",
+      "dataset": "oecd_tax_revenue",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_tax_revenue/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_taxing_wages__mart_benchmark",
+      "dataset": "oecd_taxing_wages",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_taxing_wages/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_taxing_wages__mart_italia",
+      "dataset": "oecd_taxing_wages",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_taxing_wages/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_unemployment__mart_benchmark",
+      "dataset": "oecd_unemployment",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_unemployment/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_unemployment__mart_italia",
+      "dataset": "oecd_unemployment",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_unemployment/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    }
+  ],
+  "signals": [
+    {
+      "id": "oecd_education_attainment",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_education_attainment",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222522Z_e270c04a",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 1080385,
+          "clean": 338381,
+          "mart": 13384
+        },
+        "output_bytes": {
+          "raw": 442614352,
+          "clean": 781668,
+          "mart": 52042
+        },
+        "started_at": "2026-09-29T22:25:22.521102+00:00",
+        "finished_at": "2026-09-29T22:26:59.345052+00:00",
+        "duration_seconds": 96.824
+      }
+    },
+    {
+      "id": "oecd_air_emissions",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_air_emissions",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222659Z_357b220f",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 3920,
+          "clean": 3920,
+          "mart": 245
+        },
+        "output_bytes": {
+          "raw": 1004722,
+          "clean": 30753,
+          "mart": 3502
+        },
+        "started_at": "2026-09-29T22:26:59.395339+00:00",
+        "finished_at": "2026-09-29T22:27:01.591929+00:00",
+        "duration_seconds": 2.197
+      }
+    },
+    {
+      "id": "oecd_forest",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_forest",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222701Z_10fc35da",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 49,
+          "clean": 49,
+          "mart": 49
+        },
+        "output_bytes": {
+          "raw": 9812,
+          "clean": 1481,
+          "mart": 1481
+        },
+        "started_at": "2026-09-29T22:27:01.631307+00:00",
+        "finished_at": "2026-09-29T22:27:03.256047+00:00",
+        "duration_seconds": 1.625
+      }
+    },
+    {
+      "id": "oecd_green_transition",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_green_transition",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222703Z_0cc7d6ec",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 1362,
+          "clean": 1239,
+          "mart": 69
+        },
+        "output_bytes": {
+          "raw": 344950,
+          "clean": 9434,
+          "mart": 1653
+        },
+        "started_at": "2026-09-29T22:27:03.296754+00:00",
+        "finished_at": "2026-09-29T22:27:05.356259+00:00",
+        "duration_seconds": 2.06
+      }
+    },
+    {
+      "id": "oecd_fua_economy",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_fua_economy",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222705Z_2be81d0e",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 58531,
+          "clean": 58531,
+          "mart": 2910
+        },
+        "output_bytes": {
+          "raw": 12306713,
+          "clean": 237701,
+          "mart": 14629
+        },
+        "started_at": "2026-09-29T22:27:05.398134+00:00",
+        "finished_at": "2026-09-29T22:27:11.572708+00:00",
+        "duration_seconds": 6.175
+      }
+    },
+    {
+      "id": "oecd_fua_ghg",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_fua_ghg",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222711Z_c0926a5c",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 1603350,
+          "clean": 1603350,
+          "mart": 45115
+        },
+        "output_bytes": {
+          "raw": 507403050,
+          "clean": 7847477,
+          "mart": 221055
+        },
+        "started_at": "2026-09-29T22:27:11.625050+00:00",
+        "finished_at": "2026-09-29T22:28:11.299006+00:00",
+        "duration_seconds": 59.674
+      }
+    },
+    {
+      "id": "oecd_health_expenditure",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_health_expenditure",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222811Z_88383b8e",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 71240,
+          "clean": 71240,
+          "mart": 13510
+        },
+        "output_bytes": {
+          "raw": 26109962,
+          "clean": 327777,
+          "mart": 67443
+        },
+        "started_at": "2026-09-29T22:28:11.350171+00:00",
+        "finished_at": "2026-09-29T22:28:20.636664+00:00",
+        "duration_seconds": 9.286
+      }
+    },
+    {
+      "id": "oecd_regional_gdp",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_regional_gdp",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222820Z_29e25e8d",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 971193,
+          "clean": 971125,
+          "mart": 219373
+        },
+        "output_bytes": {
+          "raw": 307210137,
+          "clean": 5707051,
+          "mart": 1638335
+        },
+        "started_at": "2026-09-29T22:28:20.685769+00:00",
+        "finished_at": "2026-09-29T22:29:35.152223+00:00",
+        "duration_seconds": 74.466
+      }
+    },
+    {
+      "id": "oecd_tax_revenue",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_tax_revenue",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222935Z_0d70973b",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 26847,
+          "clean": 26838,
+          "mart": 10140
+        },
+        "output_bytes": {
+          "raw": 7540756,
+          "clean": 53963,
+          "mart": 31534
+        },
+        "started_at": "2026-09-29T22:29:35.200289+00:00",
+        "finished_at": "2026-09-29T22:29:39.506317+00:00",
+        "duration_seconds": 4.306
+      }
+    },
+    {
+      "id": "oecd_taxing_wages",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_taxing_wages",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222939Z_05c1cf6a",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 123968,
+          "clean": 123968,
+          "mart": 3120
+        },
+        "output_bytes": {
+          "raw": 45942928,
+          "clean": 740990,
+          "mart": 23414
+        },
+        "started_at": "2026-09-29T22:29:39.668436+00:00",
+        "finished_at": "2026-09-29T22:29:49.106467+00:00",
+        "duration_seconds": 9.438
+      }
+    },
+    {
+      "id": "oecd_unemployment",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_unemployment",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20260929T222949Z_474fe87d",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 322153,
+          "clean": 322153,
+          "mart": 454
+        },
+        "output_bytes": {
+          "raw": 114235980,
+          "clean": 1136881,
+          "mart": 5066
+        },
+        "started_at": "2026-09-29T22:29:49.187951+00:00",
+        "finished_at": "2026-09-29T22:30:04.074203+00:00",
+        "duration_seconds": 14.886
+      }
+    }
+  ],
+  "codelists": [],
+  "entities": {
+    "entities": {
+      "Indicatore": {
+        "entity": "Indicatore",
+        "label": "Indicatore",
+        "datasets": [
+          {
+            "slug": "oecd_forest",
+            "name": "Oecd Forest",
+            "column": "indicatore",
+            "semantic_type": "indicatore_code"
+          },
+          {
+            "slug": "oecd_green_transition",
+            "name": "Oecd Green Transition",
+            "column": "indicatore",
+            "semantic_type": "indicatore_code"
+          }
+        ],
+        "types": {
+          "indicatore_code": 2
+        }
+      },
+      "Nazione": {
+        "entity": "Nazione",
+        "label": "Nazione",
+        "datasets": [
+          {
+            "slug": "oecd_education_attainment",
+            "name": "Oecd Education Attainment",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
+            "slug": "oecd_health_expenditure",
+            "name": "Oecd Health Expenditure",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
+            "slug": "oecd_regional_gdp",
+            "name": "Oecd Regional Gdp",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
+            "slug": "oecd_tax_revenue",
+            "name": "Oecd Tax Revenue",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
+            "slug": "oecd_taxing_wages",
+            "name": "Oecd Taxing Wages",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
+            "slug": "oecd_unemployment",
+            "name": "Oecd Unemployment",
+            "column": "paese",
+            "semantic_type": "country_code"
+          }
+        ],
+        "types": {
+          "country_code": 6
+        }
+      },
+      "Tempo": {
+        "entity": "Tempo",
+        "label": "Tempo / data",
+        "datasets": [
+          {
+            "slug": "oecd_air_emissions",
+            "name": "Oecd Air Emissions",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_education_attainment",
+            "name": "Oecd Education Attainment",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_forest",
+            "name": "Oecd Forest",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_fua_economy",
+            "name": "Oecd Fua Economy",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_fua_ghg",
+            "name": "Oecd Fua Ghg",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_green_transition",
+            "name": "Oecd Green Transition",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_health_expenditure",
+            "name": "Oecd Health Expenditure",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_regional_gdp",
+            "name": "Oecd Regional Gdp",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_tax_revenue",
+            "name": "Oecd Tax Revenue",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_taxing_wages",
+            "name": "Oecd Taxing Wages",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_unemployment",
+            "name": "Oecd Unemployment",
+            "column": "anno",
+            "semantic_type": "year"
+          }
+        ],
+        "types": {
+          "year": 11
+        }
+      }
+    },
+    "bridges": [
+      {
+        "from": {
+          "entity": "Indicatore",
+          "dataset": "oecd_forest",
+          "via": "indicatore_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "pnrr_indicatori_target",
+          "on": "cup",
+          "semantic_type": "cup_code"
+        }
+      },
+      {
+        "from": {
+          "entity": "Indicatore",
+          "dataset": "oecd_green_transition",
+          "via": "indicatore_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "pnrr_indicatori_target",
+          "on": "cup",
+          "semantic_type": "cup_code"
+        }
+      }
+    ]
+  }
+}
