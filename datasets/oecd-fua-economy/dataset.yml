@@ -1,0 +1,57 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_fua_economy"
+  source_id: "oecd"
+  tags: [economia, pil, produttivita, citta, fua, oecd]
+  category: economia
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2023
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_fua_economy"
+      type: "sdmx"
+      args:
+        agency: "OECD.CFE.EDS"
+        flow: "DSD_FUA_ECO@DF_ECONOMY"
+        version: "1.1"
+        filters:
+          FREQ: "A"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+  required_columns: [anno, fua_code, citta, misura, unita, livello, valore]
+  validate:
+    not_null: [anno, fua_code]
+    min_rows: 50
+
+mart:
+  tables:
+    - name: "mart_italia"
+      sql: "sql/mart_italia.sql"
+    - name: "mart_benchmark"
+      sql: "sql/mart_benchmark.sql"
+  required_tables: ["mart_italia", "mart_benchmark"]
+  validate:
+    table_rules:
+      mart_italia:
+        not_null: [anno, fua_code, citta]
+        min_rows: 30
+      mart_benchmark:
+        not_null: [anno, citta]
+        min_rows: 20
+
+validation:
+  fail_on_error: true

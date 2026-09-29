@@ -1,0 +1,58 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_unemployment"
+  source_id: "oecd"
+  tags: [lavoro, disoccupazione, oecd]
+  category: economia
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2025
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_unemployment"
+      type: "sdmx"
+      args:
+        agency: "OECD.SDD.TPS"
+        flow: "DSD_LFS@DF_IALFS_UNE_M"
+        version: "1.0"
+        filters:
+          FREQ: "M"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+    nullstr: "Not applicable"
+  required_columns: [anno, mese_str, ref_area, paese, misura, valore]
+  validate:
+    not_null: [anno, ref_area]
+    min_rows: 100
+
+mart:
+  tables:
+    - name: "mart_italia"
+      sql: "sql/mart_italia.sql"
+    - name: "mart_benchmark"
+      sql: "sql/mart_benchmark.sql"
+  required_tables: ["mart_italia", "mart_benchmark"]
+  validate:
+    table_rules:
+      mart_italia:
+        not_null: [anno, ref_area]
+        min_rows: 10
+      mart_benchmark:
+        not_null: [anno, paese]
+        min_rows: 10
+
+validation:
+  fail_on_error: true

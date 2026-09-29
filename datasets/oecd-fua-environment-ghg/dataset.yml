@@ -1,0 +1,59 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_fua_ghg"
+  source_id: "oecd"
+  tags: [ambiente, emissioni, co2, citta, fua, oecd]
+  category: ambiente
+  years: [2026]
+  time_coverage:
+    start_year: 2005
+    end_year: 2023
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_fua_ghg"
+      type: "sdmx"
+      args:
+        agency: "OECD.CFE.EDS"
+        flow: "DSD_FUA_ENV@DF_GHG"
+        version: "1.5"
+        filters:
+          FREQ: "A"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+    ignore_errors: true
+    nullstr: "Not applicable"
+  required_columns: [anno, fua_code, citta, pollutante, unita, livello, valore]
+  validate:
+    not_null: [anno, fua_code]
+    min_rows: 100
+
+mart:
+  tables:
+    - name: "mart_italia"
+      sql: "sql/mart_italia.sql"
+    - name: "mart_benchmark"
+      sql: "sql/mart_benchmark.sql"
+  required_tables: ["mart_italia", "mart_benchmark"]
+  validate:
+    table_rules:
+      mart_italia:
+        not_null: [anno, fua_code, citta]
+        min_rows: 50
+      mart_benchmark:
+        not_null: [anno, citta]
+        min_rows: 30
+
+validation:
+  fail_on_error: true

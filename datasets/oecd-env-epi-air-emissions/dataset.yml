@@ -1,0 +1,53 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_air_emissions"
+  source_id: "oecd"
+  tags: [ambiente, emissioni, co2, inquinamento, oecd]
+  category: ambiente
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2024
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_air_emissions"
+      type: "sdmx"
+      args:
+        agency: "OECD.ENV.EPI"
+        flow: "DSD_AIR_EMISSIONS@DF_AIR_EMISSIONS"
+        version: "1.0"
+        filters:
+          REF_AREA: "ITA"
+          FREQ: "A"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+  required_columns: [anno, inquinante, inquinante_label, misura, unita, valore]
+  validate:
+    not_null: [anno, inquinante]
+    min_rows: 100
+
+mart:
+  tables:
+    - name: "mart_emissioni_italia"
+      sql: "sql/mart_emissioni_italia.sql"
+  required_tables: ["mart_emissioni_italia"]
+  validate:
+    table_rules:
+      mart_emissioni_italia:
+        not_null: [anno, inquinante]
+        min_rows: 50
+
+validation:
+  fail_on_error: true

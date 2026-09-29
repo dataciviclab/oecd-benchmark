@@ -1,0 +1,57 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_regional_gdp"
+  source_id: "oecd"
+  tags: [economia, pil, regionale, oecd]
+  category: economia
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2023
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_reg_gdp"
+      type: "sdmx"
+      args:
+        agency: "OECD.CFE.EDS"
+        flow: "DSD_REG_ECO@DF_GDP"
+        version: "2.4"
+        filters:
+          FREQ: "A"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+  required_columns: [anno, ref_area, livello_territoriale, misura, attivita, prezzi, unita, valore]
+  validate:
+    not_null: [anno, ref_area]
+    min_rows: 100
+
+mart:
+  tables:
+    - name: "mart_italia"
+      sql: "sql/mart_italia.sql"
+    - name: "mart_benchmark"
+      sql: "sql/mart_benchmark.sql"
+  required_tables: ["mart_italia", "mart_benchmark"]
+  validate:
+    table_rules:
+      mart_italia:
+        not_null: [anno, ref_area]
+        min_rows: 30
+      mart_benchmark:
+        not_null: [anno, paese]
+        min_rows: 20
+
+validation:
+  fail_on_error: true

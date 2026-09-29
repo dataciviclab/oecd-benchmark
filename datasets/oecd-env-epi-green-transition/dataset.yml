@@ -1,0 +1,53 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_green_transition"
+  source_id: "oecd"
+  tags: [ambiente, transizione-verde, energie-rinnovabili, oecd]
+  category: ambiente
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2024
+
+raw:
+  output_policy: overwrite
+  sources:
+    - name: "sdmx_green_transition"
+      type: "sdmx"
+      args:
+        agency: "OECD.ENV.EPI"
+        flow: "DSD_GREEN_TRANSITION@DF_GREEN_TRANSITION"
+        version: "1.0"
+        filters:
+          REF_AREA: "ITA"
+          FREQ: "A"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+  required_columns: [anno, indicatore, indicatore_label, unita, valore]
+  validate:
+    not_null: [anno, indicatore]
+    min_rows: 50
+
+mart:
+  tables:
+    - name: "mart_green_transition_italia"
+      sql: "sql/mart_green_transition_italia.sql"
+  required_tables: ["mart_green_transition_italia"]
+  validate:
+    table_rules:
+      mart_green_transition_italia:
+        not_null: [anno, indicatore]
+        min_rows: 20
+
+validation:
+  fail_on_error: true
