@@ -16,8 +16,8 @@ jobs:
     with:
       repo-slug: "oecd-benchmark"
       run-command: "make pipeline"
-      run-batch-command: "make run-batch"
       detect-paths: "datasets"
+      extra-env: "BLOCKED_SOURCE_PROXY=${{ vars.BLOCKED_SOURCE_PROXY }}"
     permissions:
       contents: write
       pull-requests: write
