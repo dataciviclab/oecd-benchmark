@@ -32,34 +32,27 @@ check:
 	done
 	@echo "✅ All configs valid"
 
-.PHONY: run
-run:
-	@for f in $(DATASETS); do \
-		echo "=== $$f ==="; \
-		$(TOOLKIT) run --config "$$f" --years $(YEARS_COMMA) || exit 1; \
-	done
+# --- Pre-run: generate support files ----------------------------------------
 
-.PHONY: run-batch
-run-batch:
-	@if [ -s batch.txt ]; then \
-		$(TOOLKIT) run --batch batch.txt --years $(YEARS_COMMA); \
-	else \
-		echo "Nessun dataset da processare"; \
-	fi
+.PHONY: generate-fua-lookup
+generate-fua-lookup:
+	@echo "Generating FUA lookup from OECD API..."
+	$(PYTHON) scripts/generate_fua_lookup.py
+
+# --- Run pipeline -----------------------------------------------------------
+
+.PHONY: run
+run: generate-fua-lookup
+	@find datasets -name dataset.yml | sort > batch.txt
+	$(TOOLKIT) run --batch batch.txt
 
 .PHONY: run-%
-run-%:
+run-%: generate-fua-lookup
 	$(TOOLKIT) run --config datasets/$*/dataset.yml --years $(YEARS_COMMA)
 
 .PHONY: pipeline
 pipeline: test run
 	@echo "✅ Pipeline complete"
-
-# --- Data acquisition --------------------------------------------------------
-
-.PHONY: generate-fua-lookup
-generate-fua-lookup:
-	$(PYTHON) scripts/generate_fua_lookup.py
 
 # --- Status / diagnostics ----------------------------------------------------
 

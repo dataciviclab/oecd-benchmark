@@ -27,8 +27,11 @@ out/data/mart/
 out/data/_runs/
 out/smoke/
 
-# Keep support files
-!out/data/support/
+# Generated support files (ricostruibili da scripts/)
+datasets/support/fua_lookup.csv
+
+# Keep support directory structure
+!datasets/support/
 
 # OS
 .DS_Store
