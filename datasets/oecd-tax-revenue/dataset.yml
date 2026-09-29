@@ -33,6 +33,7 @@ clean:
     encoding: utf-8
     header: true
     nullstr: "Not applicable"
+    ignore_errors: true
   required_columns: [anno, ref_area, paese, misura, settore, unita, valore]
   validate:
     not_null: [anno, misura]

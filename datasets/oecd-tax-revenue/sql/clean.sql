@@ -4,18 +4,19 @@
 -- 7 dimensions: REF_AREA, MEASURE, SECTOR, STANDARD_REVENUE, CTRY_SPECIFIC_REVENUE, UNIT_MEASURE, FREQ
 
 SELECT
-    CAST(TIME_PERIOD AS INTEGER) AS anno,
-    CAST(REF_AREA AS VARCHAR) AS ref_area,
-    CAST("Reference area" AS VARCHAR) AS paese,
-    CAST(MEASURE AS VARCHAR) AS misura,
-    CAST("Measure" AS VARCHAR) AS misura_label,
-    CAST(SECTOR AS VARCHAR) AS settore,
-    CAST("Institutional sector" AS VARCHAR) AS settore_label,
-    CAST(UNIT_MEASURE AS VARCHAR) AS unita,
-    CAST("Unit of measure" AS VARCHAR) AS unita_label,
-    CAST(OBS_VALUE AS DOUBLE) AS valore
+    cast_int(TIME_PERIOD) AS anno,
+    normalize_string(REF_AREA) AS ref_area,
+    normalize_string("Reference area") AS paese,
+    normalize_string(MEASURE) AS misura,
+    normalize_string("Measure") AS misura_label,
+    normalize_string(SECTOR) AS settore,
+    normalize_string("Institutional sector") AS settore_label,
+    normalize_string(UNIT_MEASURE) AS unita,
+    normalize_string("Unit of measure") AS unita_label,
+    cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL
   AND OBS_VALUE IS NOT NULL
-  AND CAST(TIME_PERIOD AS VARCHAR) ~ '^\d{4}$'
+  AND OBS_VALUE != ''
+  AND normalize_string(TIME_PERIOD) ~ '^\d{4}$'
 ORDER BY anno, misura, settore

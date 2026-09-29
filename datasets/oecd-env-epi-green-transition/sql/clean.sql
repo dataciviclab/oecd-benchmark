@@ -3,13 +3,13 @@
 -- raw_input schema from OECD csvfilewithlabels
 
 SELECT
-    CAST(TIME_PERIOD AS INTEGER) AS anno,
-    CAST(MEASURE AS VARCHAR) AS indicatore,
-    CAST("Measure" AS VARCHAR) AS indicatore_label,
-    CAST(UNIT_MEASURE AS VARCHAR) AS unita,
-    CAST(OBS_VALUE AS DOUBLE) AS valore
+    cast_int(TIME_PERIOD) AS anno,
+    normalize_string(MEASURE) AS indicatore,
+    normalize_string("Measure") AS indicatore_label,
+    normalize_string(UNIT_MEASURE) AS unita,
+    cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL
   AND OBS_VALUE IS NOT NULL
-  AND CAST(TIME_PERIOD AS INTEGER) <= 2025
+  AND cast_int(TIME_PERIOD) <= 2025
 ORDER BY anno, indicatore

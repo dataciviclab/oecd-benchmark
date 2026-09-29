@@ -5,17 +5,17 @@
 -- NOTA: TIME_PERIOD può contenere "Not applicable" — filtrare via
 
 SELECT
-    CAST(TIME_PERIOD AS INTEGER) AS anno,
-    CAST(REF_AREA AS VARCHAR) AS fua_code,
-    CAST("Reference area" AS VARCHAR) AS citta,
-    CAST(MEASURE AS VARCHAR) AS pollutante,
-    CAST("Measure" AS VARCHAR) AS pollutante_label,
-    CAST(UNIT_MEASURE AS VARCHAR) AS unita,
-    CAST("Unit of measure" AS VARCHAR) AS unita_label,
-    CAST(TERRITORIAL_LEVEL AS VARCHAR) AS livello,
-    CAST(OBS_VALUE AS DOUBLE) AS valore
+    cast_int(TIME_PERIOD) AS anno,
+    normalize_string(REF_AREA) AS fua_code,
+    normalize_string("Reference area") AS citta,
+    normalize_string(MEASURE) AS pollutante,
+    normalize_string("Measure") AS pollutante_label,
+    normalize_string(UNIT_MEASURE) AS unita,
+    normalize_string("Unit of measure") AS unita_label,
+    normalize_string(TERRITORIAL_LEVEL) AS livello,
+    cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL
   AND OBS_VALUE IS NOT NULL
-  AND CAST(TIME_PERIOD AS VARCHAR) ~ '^\d{4}$'  -- Solo anni validi (4 cifre)
+  AND normalize_string(TIME_PERIOD) ~ '^\d{4}$'  -- Solo anni validi (4 cifre)
 ORDER BY anno, fua_code, pollutante

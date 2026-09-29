@@ -8,12 +8,12 @@
 --   OBS_VALUE, "Observation value", OBS_STATUS, ...
 
 SELECT
-    CAST(TIME_PERIOD AS INTEGER) AS anno,
-    CAST(POLLUTANT AS VARCHAR) AS inquinante,
-    CAST("Pollutant" AS VARCHAR) AS inquinante_label,
-    CAST(MEASURE AS VARCHAR) AS misura,
-    CAST(UNIT_MEASURE AS VARCHAR) AS unita,
-    CAST(OBS_VALUE AS DOUBLE) AS valore
+    cast_int(TIME_PERIOD) AS anno,
+    normalize_string(POLLUTANT) AS inquinante,
+    normalize_string("Pollutant") AS inquinante_label,
+    normalize_string(MEASURE) AS misura,
+    normalize_string(UNIT_MEASURE) AS unita,
+    cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL
   AND OBS_VALUE IS NOT NULL

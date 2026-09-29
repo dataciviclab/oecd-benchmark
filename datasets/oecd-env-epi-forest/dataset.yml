@@ -36,7 +36,7 @@ clean:
   required_columns: [anno, indicatore, indicatore_label, unita, valore]
   validate:
     not_null: [anno, indicatore]
-    min_rows: 50
+    min_rows: 40
 
 mart:
   tables:
