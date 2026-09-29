@@ -18,6 +18,8 @@ dependencies = [
 ]
 
 # Nessun package Python: il repo è dati + SQL + scripts.
+[tool.setuptools]
+packages = []
 
 [project.optional-dependencies]
 dashboard = [
