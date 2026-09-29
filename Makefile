@@ -39,6 +39,14 @@ run:
 		$(TOOLKIT) run --config "$$f" --years $(YEARS_COMMA) || exit 1; \
 	done
 
+.PHONY: run-batch
+run-batch:
+	@if [ -s batch.txt ]; then \
+		$(TOOLKIT) run --batch batch.txt --years $(YEARS_COMMA); \
+	else \
+		echo "Nessun dataset da processare"; \
+	fi
+
 .PHONY: run-%
 run-%:
 	$(TOOLKIT) run --config datasets/$*/dataset.yml --years $(YEARS_COMMA)

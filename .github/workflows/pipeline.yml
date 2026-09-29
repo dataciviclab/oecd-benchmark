@@ -16,6 +16,8 @@ jobs:
     with:
       repo-slug: "oecd-benchmark"
       run-command: "make pipeline"
+      run-batch-command: "make run-batch"
+      detect-paths: "datasets"
     permissions:
       contents: write
       pull-requests: write
