@@ -4,6 +4,7 @@ Benchmark internazionale: emissioni, PIL, salute, istruzione, lavoro, fisco.
 """
 
 import streamlit as st
+from lab_connectors.branding import apply_branding
 
 st.set_page_config(
     page_title="OECD Data Explorer",
@@ -11,6 +12,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+apply_branding()
 
 pages = {
     "Panoramica": [

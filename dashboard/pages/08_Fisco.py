@@ -48,7 +48,16 @@ with tab1:
                 prev_val = prev["valore_mld"].values[0]
                 delta = (val - prev_val) / prev_val * 100
                 col1.metric(f"Entrate {int(latest['anno'].values[0])}", f"€{val:.1f}B", f"{delta:+.1f}%")
-            col2.metric("Crescita 20 anni", f"{(total['valore_mld'].iloc[-1] / total['valore_mld'].iloc[0] - 1) * 100:.0f}%" if len(total) > 1 else "N/D")
+            # Crescita: ultimo anno vs 10 anni fa
+            if len(total) > 2:
+                max_year = total["anno"].max()
+                recent = total[total["anno"] == max_year]
+                old = total[total["anno"] == max_year - 10]
+                if len(recent) > 0 and len(old) > 0:
+                    val_r = recent["valore_mld"].values[0]
+                    val_o = old["valore_mld"].values[0]
+                    growth = (val_r / val_o - 1) * 100 if val_o > 0 else 0
+                    col2.metric(f"Crescita 10 anni", f"{growth:+.0f}%")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -57,14 +66,16 @@ with tab1:
     st.markdown("### Composizione entrate per settore (Italia, 2022)")
 
     try:
-        from sources import load_clean
-        df_clean = load_clean("tax_revenue")
-        composition = df_clean[
-            (df_clean["anno"] == 2022) &
-            (df_clean["settore"] != "S13") &
-            (df_clean["valore"] > 0)
-        ].groupby("settore_label")["valore"].max().reset_index()
-        composition = composition.sort_values("valore", ascending=True)
+        from sources import query as _query
+        composition = _query("tax_revenue", """
+            SELECT settore_label, MAX(valore) as valore
+            FROM clean_input
+            WHERE anno = 2022
+              AND settore != 'S13'
+              AND valore > 0
+            GROUP BY settore_label
+            ORDER BY valore
+        """)
 
         chart2 = alt.Chart(composition).mark_bar().encode(
             x=alt.X("valore:Q", title="EUR"),

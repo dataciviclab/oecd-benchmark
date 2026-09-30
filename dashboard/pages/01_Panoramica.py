@@ -9,7 +9,8 @@ import altair as alt
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from sources import fmt_mt, fmt_num, fmt_pct, load_mart
+from lab_connectors.formatters import fmt_num, fmt_pct
+from sources import load_mart
 
 st.title("🌍 OECD Data Explorer")
 st.markdown("**Benchmark internazionale**: emissioni, PIL, salute, istruzione — dati OCSE per l'Italia.")
@@ -24,7 +25,7 @@ try:
     df_ghg = load_mart("ghg", "mart_benchmark")
     roma_2022 = df_ghg[(df_ghg["citta"] == "Roma") & (df_ghg["anno"] == 2022)]["valore"].values
     roma_val = roma_2022[0] if len(roma_2022) > 0 else 0
-    col1.metric("🏭 Roma", fmt_mt(roma_val), "Mt CO2e")
+    col1.metric("🏭 Roma", f"{fmt_num(roma_val)} Mt", "Mt CO2e")
 except Exception:
     col1.metric("🏭 Roma", "N/D")
 
@@ -33,7 +34,7 @@ try:
     df_eco = load_mart("economy", "mart_italia")
     milano_2022 = df_eco[(df_eco["citta"] == "Milano") & (df_eco["anno"] == 2022) & (df_eco["misura"] == "LAB_PROD")]["valore"].values
     milano_val = milano_2022[0] if len(milano_2022) > 0 else 0
-    col2.metric("💰 Milano", f"${fmt_num(milano_val, 0)}", "PIL pro capite PPP")
+    col2.metric("💰 Milano", f"${fmt_num(milano_val)}", "PIL pro capite PPP")
 except Exception:
     col2.metric("💰 Milano", "N/D")
 

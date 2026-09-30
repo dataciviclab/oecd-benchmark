@@ -9,7 +9,8 @@ import altair as alt
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from sources import fmt_pct, load_mart
+from lab_connectors.formatters import fmt_pct
+from sources import load_mart
 
 st.title("👷 Disoccupazione")
 st.markdown("Tasso di disoccupazione Italia confrontato con paesi G7.")

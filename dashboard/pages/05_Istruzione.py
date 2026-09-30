@@ -9,7 +9,8 @@ import altair as alt
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from sources import fmt_pct, load_mart
+from lab_connectors.formatters import fmt_pct
+from sources import load_mart
 
 st.title("🎓 Istruzione")
 st.markdown("Livello di istruzione della popolazione italiana confrontato con regioni OCSE.")
@@ -111,14 +112,16 @@ selected_regions = st.multiselect(
 if selected_regions:
     try:
         # Query diretta sui dati clean per regioni OCSE
-        from sources import load_clean
-        df_clean = load_clean("education")
-        ocse = df_clean[
-            (df_clean["anno"] == anno) &
-            (df_clean["eta"] == eta) &
-            (df_clean["sesso"] == "_T") &
-            (df_clean["paese"].isin(selected_regions + ["Lazio", "Lombardy"]))
-        ][["paese", "valore"]].sort_values("valore", ascending=False)
+        from sources import query as _query
+        regions_str = ", ".join([f"'{r}'" for r in selected_regions + ["Lazio", "Lombardy"]])
+        ocse = _query("education", f"""
+            SELECT paese, valore
+            FROM clean_input
+            WHERE anno = {anno}
+              AND eta = '{eta}'
+              AND sesso = '_T'
+              AND paese IN ({regions_str})
+        """)
 
         ocse["gruppo"] = ocse["paese"].apply(lambda x: "Italia" if x in ["Lazio", "Lombardy"] else "OCSE")
 

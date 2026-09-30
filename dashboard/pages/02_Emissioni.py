@@ -9,7 +9,7 @@ import altair as alt
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from sources import load_clean, load_mart
+from sources import load_mart
 
 st.title("🏭 Emissioni GHG Città")
 st.markdown("Emissioni di gas a effetto serra per Functional Urban Area (FUA).")
@@ -87,10 +87,16 @@ st.markdown("---")
 # --- Evoluzione temporale ---
 st.markdown("### Evoluzione temporale (1990-2024)")
 
+try:
+    df_cities = load_mart("ghg", "mart_italia")
+    cities = sorted(df_cities[df_cities["fua_code"].str.endswith("F")]["citta"].unique())
+except Exception:
+    cities = []
+
 cities_to_show = st.multiselect(
     "Seleziona città",
-    options=italy["citta"].unique().tolist() if 'italy' in dir() else [],
-    default=["Roma", "Milano", "Torino", "Napoli"]
+    options=cities,
+    default=[c for c in ["Roma", "Milano", "Torino", "Napoli"] if c in cities]
 )
 
 if cities_to_show:
@@ -118,14 +124,17 @@ st.markdown("---")
 st.markdown("### Emissioni per settore (Italia, media FUA)")
 
 try:
-    df_clean = load_clean("ghg")
-    sector = df_clean[
-        (df_clean["fua_code"].str.startswith("IT")) &
-        (df_clean["anno"] == 2022) &
-        (df_clean["unita"] == "T_CO2E") &
-        (df_clean["pollutante"] != "GHG_TOTAL")
-    ].groupby("pollutante_label")["valore"].mean().reset_index()
-    sector = sector.sort_values("valore", ascending=True)
+    from sources import query as _query
+    sector = _query("ghg", """
+        SELECT pollutante_label, AVG(valore) as valore
+        FROM clean_input
+        WHERE fua_code LIKE 'IT%'
+          AND anno = 2022
+          AND unita = 'T_CO2E'
+          AND pollutante != 'GHG_TOTAL'
+        GROUP BY pollutante_label
+        ORDER BY valore
+    """)
 
     chart4 = alt.Chart(sector).mark_bar().encode(
         x=alt.X("valore:Q", title="Media Mt CO2e"),
