@@ -18,8 +18,8 @@ raw:
       type: "sdmx"
       args:
         agency: "OECD.CTP.TPS"
-        flow: "DSD_REV_OECD@DF_REVITA"
-        version: "2.1"
+        flow: "DSD_REV_COMP_OECD@DF_RSOECD"
+        version: "2.0"
         filters:
           FREQ: "A"
       primary: true
