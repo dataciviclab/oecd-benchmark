@@ -1,4 +1,4 @@
--- mart_benchmark.sql: Spesa sanitaria — Italia vs OCSE vs G7
+-- mart_benchmark.sql: Spesa sanitaria — benchmark
 --
 -- Confronto spesa sanitaria totale per paese (funzione totale, schema totale)
 
