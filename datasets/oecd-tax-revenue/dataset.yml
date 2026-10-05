@@ -18,8 +18,8 @@ raw:
       type: "sdmx"
       args:
         agency: "OECD.CTP.TPS"
-        flow: "DSD_REV_OECD@DF_REVITA"
-        version: "2.1"
+        flow: "DSD_REV_COMP_OECD@DF_RSOECD"
+        version: "1.0"
         filters:
           FREQ: "A"
       primary: true
@@ -34,7 +34,7 @@ clean:
     header: true
     nullstr: "Not applicable"
     ignore_errors: true
-  required_columns: [anno, ref_area, paese, misura, settore, unita, valore]
+  required_columns: [anno, ref_area, paese, misura, settore, unita, valore, revenue_category]
   validate:
     not_null: [anno, misura]
     min_rows: 50

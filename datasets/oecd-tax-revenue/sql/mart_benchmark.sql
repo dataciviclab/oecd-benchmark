@@ -1,6 +1,6 @@
--- mart_benchmark.sql: Entrate fiscali — Italia vs G7
+-- mart_benchmark.sql: Entrate fiscali — benchmark paesi OCSE
 --
--- Confronto entrate totali per paese
+-- Confronto entrate fiscali totali (T_SPLIT) come % del PIL
 
 SELECT
     anno,
@@ -9,7 +9,8 @@ SELECT
     misura,
     valore
 FROM clean_input
-WHERE ref_area IN ('ITA', 'DEU', 'FRA', 'GBR', 'USA', 'JPN', 'CAN')
-  AND settore = 'S13'
-  AND unita = 'EUR'
+WHERE settore = 'S13'
+  AND misura = 'TAX_REV'
+  AND unita = 'PT_B1GQ'
+  AND revenue_category = 'T_SPLIT'
 ORDER BY anno, ref_area
