@@ -147,3 +147,28 @@ class TestValidationRules:
         for table in mart.get("tables", []):
             tname = table["name"]
             assert tname in table_rules, f"{name}: mart manca table_rules per '{tname}'"
+
+
+# -- Contract: semantic filters (tax revenue) --
+
+@pytest.mark.contract
+class TestTaxRevenueSemanticFilters:
+    """I mart SQL di tax revenue devono filtrare T_SPLIT + PT_B1GQ."""
+
+    def test_mart_italia_filters(self):
+        sql_path = DATASETS_DIR / "oecd-tax-revenue" / "sql" / "mart_italia.sql"
+        sql = sql_path.read_text()
+        assert "T_SPLIT" in sql, "mart_italia.sql: manca filtro revenue_category = 'T_SPLIT'"
+        assert "PT_B1GQ" in sql, "mart_italia.sql: manca filtro unita = 'PT_B1GQ'"
+
+    def test_mart_benchmark_filters(self):
+        sql_path = DATASETS_DIR / "oecd-tax-revenue" / "sql" / "mart_benchmark.sql"
+        sql = sql_path.read_text()
+        assert "T_SPLIT" in sql, "mart_benchmark.sql: manca filtro revenue_category = 'T_SPLIT'"
+        assert "PT_B1GQ" in sql, "mart_benchmark.sql: manca filtro unita = 'PT_B1GQ'"
+
+    def test_clean_has_revenue_category(self):
+        yml_path = DATASETS_DIR / "oecd-tax-revenue" / "dataset.yml"
+        data = _load_dataset_yml(yml_path)
+        rc = data.get("clean", {}).get("required_columns", [])
+        assert "revenue_category" in rc, "clean.required_columns: manca revenue_category"

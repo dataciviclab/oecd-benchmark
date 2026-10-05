@@ -8,8 +8,8 @@ dataset:
   category: economia
   years: [2026]
   time_coverage:
-    start_year: 2000
-    end_year: 2023
+    start_year: 1965
+    end_year: 2022
 
 raw:
   output_policy: overwrite

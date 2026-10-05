@@ -74,7 +74,7 @@ with tab1:
             "NLD": "Paesi Bassi", "ESP": "Spagna", "PRT": "Portogallo",
             "GRC": "Grecia", "IRL": "Irlanda", "LUX": "Lussemburgo",
             "CHE": "Svizzera", "ISL": "Islanda", "AUS": "Australia",
-            "NZL": "Nuova Zelanda", "KOR": "Corea del Sud", "JPN_": "Giappone",
+            "NZL": "Nuova Zelanda", "KOR": "Corea del Sud",
             "OECD_REP": "Media OCSE"
         }
         latest["paese_en"] = latest["paese"]
