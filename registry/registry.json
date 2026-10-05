@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repo": "oecd-benchmark",
   "source_repo": "dataciviclab/oecd-benchmark",
-  "updated_at": "2026-10-01",
+  "updated_at": "2026-10-05",
   "datasets": [
     {
       "slug": "oecd_air_emissions",
@@ -1424,7 +1424,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261001T120941Z_8fa8b816",
+        "run_id": "20261005T175245Z_1b4c86ae",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1435,16 +1435,16 @@
         "output_rows": {
           "raw": 71240,
           "clean": 71240,
-          "mart": 13510
+          "mart": 7273
         },
         "output_bytes": {
           "raw": 26109962,
           "clean": 327777,
-          "mart": 67443
+          "mart": 39245
         },
-        "started_at": "2026-10-01T12:09:41.663958+00:00",
-        "finished_at": "2026-10-01T12:09:44.037698+00:00",
-        "duration_seconds": 2.374
+        "started_at": "2026-10-05T17:52:45.158719+00:00",
+        "finished_at": "2026-10-05T17:52:54.414691+00:00",
+        "duration_seconds": 9.256
       }
     },
     {
