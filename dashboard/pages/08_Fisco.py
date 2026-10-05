@@ -36,7 +36,7 @@ with tab1:
             tooltip=["anno", "valore_mld"]
         ).properties(height=350)
 
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart, width="stretch")
 
         # KPI
         col1, col2 = st.columns(2)
@@ -57,7 +57,7 @@ with tab1:
                     val_r = recent["valore_mld"].values[0]
                     val_o = old["valore_mld"].values[0]
                     growth = (val_r / val_o - 1) * 100 if val_o > 0 else 0
-                    col2.metric(f"Crescita 10 anni", f"{growth:+.0f}%")
+                    col2.metric("Crescita 10 anni", f"{growth:+.0f}%")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -84,7 +84,7 @@ with tab1:
             tooltip=["settore_label", "valore"]
         ).properties(height=300)
 
-        st.altair_chart(chart2, use_container_width=True)
+        st.altair_chart(chart2, width="stretch")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -122,7 +122,7 @@ with tab2:
                 tooltip=["paese", "anno", "valore"]
             ).properties(height=300)
 
-            st.altair_chart(chart3, use_container_width=True)
+            st.altair_chart(chart3, width="stretch")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -154,7 +154,7 @@ with tab2:
                 tooltip=["anno", "paese", "valore"]
             ).properties(height=350)
 
-            st.altair_chart(chart4, use_container_width=True)
+            st.altair_chart(chart4, width="stretch")
     except Exception as e:
         st.warning(f"Errore: {e}")
 

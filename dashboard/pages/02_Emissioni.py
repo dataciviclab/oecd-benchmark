@@ -41,7 +41,7 @@ try:
         tooltip=["citta", "valore"]
     ).properties(height=max(300, top_n * 25))
 
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 
@@ -67,7 +67,7 @@ try:
             color=alt.value("#2a9d8f"),
             tooltip=["citta", "valore", "ranking"]
         ).properties(height=400)
-        st.altair_chart(chart2, use_container_width=True)
+        st.altair_chart(chart2, width="stretch")
 
     with col2:
         st.dataframe(
@@ -76,7 +76,7 @@ try:
                 "valore": "Mt CO2e",
                 "ranking": "Ranking"
             }),
-            use_container_width=True,
+            width="stretch",
             hide_index=True
         )
 except Exception as e:
@@ -115,7 +115,7 @@ if cities_to_show:
             tooltip=["anno", "citta", "valore"]
         ).properties(height=350)
 
-        st.altair_chart(chart3, use_container_width=True)
+        st.altair_chart(chart3, width="stretch")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -143,7 +143,7 @@ try:
         tooltip=["pollutante_label", "valore"]
     ).properties(height=250)
 
-    st.altair_chart(chart4, use_container_width=True)
+    st.altair_chart(chart4, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 

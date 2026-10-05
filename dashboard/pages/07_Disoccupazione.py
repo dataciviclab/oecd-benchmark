@@ -28,7 +28,7 @@ try:
         tooltip=["anno", "media_annuale"]
     ).properties(height=350)
 
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
 
     # KPI
     col1, col2, col3 = st.columns(3)
@@ -73,7 +73,7 @@ try:
         tooltip=["paese", "anno", "media_annuale"]
     ).properties(height=300)
 
-    st.altair_chart(chart2, use_container_width=True)
+    st.altair_chart(chart2, width="stretch")
 
     # Tabella dettaglio
     st.dataframe(
@@ -82,7 +82,7 @@ try:
             "anno": "Anno",
             "media_annuale": "% Disoccupazione"
         }).sort_values("% Disoccupazione", ascending=False),
-        use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 except Exception as e:
@@ -111,7 +111,7 @@ try:
             tooltip=["anno", "paese", "media_annuale"]
         ).properties(height=350)
 
-        st.altair_chart(chart3, use_container_width=True)
+        st.altair_chart(chart3, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 

@@ -6,7 +6,9 @@
 
 - [ ] Bug fix
 - [ ] Nuovo dataset
+- [ ] Espansione dataset (aggiunta paesi/anni/indicatori)
 - [ ] Aggiornamento dashboard
+- [ ] Pipeline / CI
 - [ ] Documentazione
 - [ ] Altro
 

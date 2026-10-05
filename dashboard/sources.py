@@ -38,4 +38,3 @@ def query(slug: str, sql: str, years: list[int] | None = None) -> pd.DataFrame:
     return query_clean(_slug(slug), sql, years or [2026], prefix=PREFIX)
 
 
-from lab_connectors.formatters import fmt_eur, fmt_num, fmt_pct  # noqa: E402
