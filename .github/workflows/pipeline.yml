@@ -19,7 +19,7 @@ jobs:
     uses: dataciviclab/.github/.github/workflows/pipeline-reusable.yml@main
     with:
       repo-slug: "oecd-benchmark"
-      run-command: "make run"
+      run-command: "make pipeline"
       run-batch-command: "make run-batch"
       detect-paths: "datasets"
       sync-pattern: "per-dataset"

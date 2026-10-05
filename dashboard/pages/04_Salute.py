@@ -104,7 +104,7 @@ try:
         # Line chart
         chart = alt.Chart(benchmark).mark_line(point=True).encode(
             x=alt.X("anno:Q", title="Anno"),
-            y=alt.Y("valore:Q", title="% PIL", scale=alt.Scale(domain=[5, 18])),
+            y=alt.Y("valore:Q", title="% PIL"),
             color=alt.Color("paese:N", title="Paese"),
             tooltip=["paese", "anno", "valore"]
         ).properties(height=400)
