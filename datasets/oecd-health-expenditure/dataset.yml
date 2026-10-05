@@ -21,7 +21,6 @@ raw:
         flow: "DSD_SHA@DF_SHA"
         version: "1.1"
         filters:
-          REF_AREA: "ITA"
           FREQ: "A"
       primary: true
 

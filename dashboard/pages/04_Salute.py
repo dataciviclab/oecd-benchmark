@@ -81,3 +81,52 @@ except Exception as e:
     st.warning(f"Errore: {e}")
 
 st.caption("Fonte: OECD ELS.HD · Health Expenditure (SHA) · Benchmark G7 richiede re-download dati OECD")
+
+st.markdown("---")
+
+# --- Benchmark G7 ---
+st.markdown("### Benchmark G7 — Spesa sanitaria (% PIL)")
+
+try:
+    bm = load_mart("health", "mart_benchmark")
+    benchmark = bm[bm["unita"] == "PT_B1GQ"][
+        ["anno", "ref_area", "valore"]
+    ].dropna()
+
+    if len(benchmark) > 0:
+        # Country names mapping
+        country_names = {
+            "ITA": "Italia", "DEU": "Germania", "FRA": "Francia",
+            "GBR": "Regno Unito", "USA": "USA", "JPN": "Giappone", "CAN": "Canada"
+        }
+        benchmark["paese"] = benchmark["ref_area"].map(country_names).fillna(benchmark["ref_area"])
+
+        # Line chart
+        chart = alt.Chart(benchmark).mark_line(point=True).encode(
+            x=alt.X("anno:Q", title="Anno"),
+            y=alt.Y("valore:Q", title="% PIL", scale=alt.Scale(domain=[5, 18])),
+            color=alt.Color("paese:N", title="Paese"),
+            tooltip=["paese", "anno", "valore"]
+        ).properties(height=400)
+
+        st.altair_chart(chart, use_container_width=True)
+
+        # Latest year comparison
+        latest_year = benchmark["anno"].max()
+        latest = benchmark[benchmark["anno"] == latest_year].sort_values("valore", ascending=False)
+
+        st.markdown(f"**Confronto {int(latest_year)}:**")
+        cols = st.columns(min(len(latest), 7))
+        for idx, (_, row) in enumerate(latest.iterrows()):
+            if idx < 7:
+                cols[idx].metric(
+                    row["paese"],
+                    fmt_pct(row["valore"]),
+                    delta=f"vs ITA: {row['valore'] - latest[latest['ref_area']=='ITA']['valore'].values[0]:+.2f} pp" if row["ref_area"] != "ITA" and len(latest[latest['ref_area']=='ITA']) > 0 else None
+                )
+    else:
+        st.info("Nessun dato benchmark disponibile.")
+except Exception as e:
+    st.warning(f"Errore benchmark: {e}")
+
+st.caption("Fonte: OECD ELS.HD · Health Expenditure (SHA) · Benchmark G7 (ITA, DEU, FRA, GBR, USA, JPN, CAN)")

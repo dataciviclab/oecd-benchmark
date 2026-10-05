@@ -7,9 +7,10 @@ Output: datasets/support/fua_lookup.csv
 
 import csv
 import io
-import requests
 import sys
 from pathlib import Path
+
+import requests
 
 OUTPUT = Path(__file__).parent.parent / "datasets" / "support" / "fua_lookup.csv"
 
@@ -24,7 +25,7 @@ URL = (
 
 def fetch_fua_data() -> str:
     """Scarica dati FUA dall'API OECD."""
-    print(f"Fetching FUA data from OECD...")
+    print("Fetching FUA data from OECD...")
     r = requests.get(URL, timeout=60)
     r.raise_for_status()
     return r.text

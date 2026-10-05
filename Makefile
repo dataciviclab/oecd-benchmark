@@ -36,8 +36,12 @@ check:
 
 .PHONY: generate-fua-lookup
 generate-fua-lookup:
-	@echo "Generating FUA lookup from OECD API..."
-	$(PYTHON) scripts/generate_fua_lookup.py
+	@if [ ! -f datasets/support/fua_lookup.csv ]; then \
+		echo "Generating FUA lookup from OECD API..."; \
+		$(PYTHON) scripts/generate_fua_lookup.py; \
+	else \
+		echo "FUA lookup already exists"; \
+	fi
 
 # --- Run pipeline -----------------------------------------------------------
 
@@ -45,6 +49,15 @@ generate-fua-lookup:
 run: generate-fua-lookup
 	@find datasets -name dataset.yml | sort > batch.txt
 	$(TOOLKIT) run --batch batch.txt
+
+# Batch selettivo (PR post-merge: solo dataset cambiati)
+.PHONY: run-batch
+run-batch: generate-fua-lookup
+	@if [ -s batch.txt ]; then \
+		$(TOOLKIT) run --batch batch.txt; \
+	else \
+		echo "Nessun dataset da processare"; \
+	fi
 
 .PHONY: run-%
 run-%: generate-fua-lookup

@@ -9,14 +9,20 @@ on:
     - cron: "0 6 1 * *"
   workflow_dispatch:
 
+concurrency:
+  group: oecd-benchmark-pipeline-${{ github.event.pull_request.number || github.ref || 'schedule' }}
+  cancel-in-progress: false
+
 jobs:
   pipeline:
     if: github.event.pull_request.merged == true || github.event_name != 'pull_request'
     uses: dataciviclab/.github/.github/workflows/pipeline-reusable.yml@main
     with:
       repo-slug: "oecd-benchmark"
-      run-command: "make pipeline"
+      run-command: "make run"
+      run-batch-command: "make run-batch"
       detect-paths: "datasets"
+      sync-pattern: "per-dataset"
       extra-env: "BLOCKED_SOURCE_PROXY=${{ vars.BLOCKED_SOURCE_PROXY }}"
     permissions:
       contents: write

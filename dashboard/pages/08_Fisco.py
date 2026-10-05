@@ -57,7 +57,7 @@ with tab1:
                     val_r = recent["valore_mld"].values[0]
                     val_o = old["valore_mld"].values[0]
                     growth = (val_r / val_o - 1) * 100 if val_o > 0 else 0
-                    col2.metric(f"Crescita 10 anni", f"{growth:+.0f}%")
+                    col2.metric("Crescita 10 anni", f"{growth:+.0f}%")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
