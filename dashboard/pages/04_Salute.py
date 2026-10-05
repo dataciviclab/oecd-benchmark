@@ -41,7 +41,7 @@ try:
         text="COVID", color="red", dy=-10
     ).encode(x="anno:Q", y="valore:Q")
 
-    st.altair_chart(chart + covid_line + covid_text, use_container_width=True)
+    st.altair_chart(chart + covid_line + covid_text, width="stretch")
 
     # KPI
     col1, col2, col3 = st.columns(3)
@@ -76,7 +76,7 @@ try:
         tooltip=["anno", "valore"]
     ).properties(height=300)
 
-    st.altair_chart(chart4, use_container_width=True)
+    st.altair_chart(chart4, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 
@@ -109,7 +109,7 @@ try:
             tooltip=["paese", "anno", "valore"]
         ).properties(height=400)
 
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart, width="stretch")
 
         # Latest year comparison
         latest_year = benchmark["anno"].max()

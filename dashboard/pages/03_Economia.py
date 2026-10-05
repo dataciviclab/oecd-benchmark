@@ -39,7 +39,7 @@ try:
         tooltip=["citta", "valore"]
     ).properties(height=400)
 
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 
@@ -64,7 +64,7 @@ try:
         tooltip=["citta", "valore"]
     ).properties(height=300)
 
-    st.altair_chart(chart2, use_container_width=True)
+    st.altair_chart(chart2, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 
@@ -93,7 +93,7 @@ if cities:
             tooltip=["anno", "citta", "valore"]
         ).properties(height=350)
 
-        st.altair_chart(chart3, use_container_width=True)
+        st.altair_chart(chart3, width="stretch")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
@@ -115,7 +115,7 @@ try:
         tooltip=["paese", "valore"]
     ).properties(height=300)
 
-    st.altair_chart(chart4, use_container_width=True)
+    st.altair_chart(chart4, width="stretch")
 except Exception as e:
     st.warning(f"Errore: {e}")
 
