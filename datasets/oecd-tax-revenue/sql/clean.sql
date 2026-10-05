@@ -16,6 +16,7 @@ SELECT
     normalize_string(CTRY_SPECIFIC_REVENUE) AS revenue_specific,
     normalize_string(UNIT_MEASURE) AS unita,
     normalize_string("Unit of measure") AS unita_label,
+    normalize_string(OBS_STATUS) AS obs_status,
     cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL

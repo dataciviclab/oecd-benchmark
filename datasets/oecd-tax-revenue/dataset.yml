@@ -34,7 +34,7 @@ clean:
     header: true
     nullstr: "Not applicable"
     ignore_errors: true
-  required_columns: [anno, ref_area, paese, misura, settore, unita, valore, revenue_category]
+  required_columns: [anno, ref_area, paese, misura, settore, unita, valore, revenue_category, obs_status]
   validate:
     not_null: [anno, misura]
     min_rows: 50
