@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repo": "oecd-benchmark",
   "source_repo": "dataciviclab/oecd-benchmark",
-  "updated_at": "2026-10-05",
+  "updated_at": "2026-10-06",
   "datasets": [
     {
       "slug": "oecd_air_emissions",
@@ -788,6 +788,24 @@
           "description": ""
         },
         {
+          "name": "revenue_category",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "revenue_category_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "revenue_specific",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
           "name": "unita",
           "type": "VARCHAR",
           "role": "dimension",
@@ -795,6 +813,12 @@
         },
         {
           "name": "unita_label",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "obs_status",
           "type": "VARCHAR",
           "role": "dimension",
           "description": ""
@@ -1486,7 +1510,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261001T121030Z_1db72f66",
+        "run_id": "20261006T085048Z_a453b991",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1495,18 +1519,18 @@
           "mart": 100
         },
         "output_rows": {
-          "raw": 26847,
-          "clean": 26838,
-          "mart": 10140
+          "raw": 2825307,
+          "clean": 1496211,
+          "mart": 1106
         },
         "output_bytes": {
-          "raw": 7540756,
-          "clean": 53963,
-          "mart": 31534
+          "raw": 977017476,
+          "clean": 6641585,
+          "mart": 8284
         },
-        "started_at": "2026-10-01T12:10:30.429825+00:00",
-        "finished_at": "2026-10-01T12:10:34.628945+00:00",
-        "duration_seconds": 4.199
+        "started_at": "2026-10-06T08:50:48.283340+00:00",
+        "finished_at": "2026-10-06T08:53:18.804517+00:00",
+        "duration_seconds": 150.521
       }
     },
     {
