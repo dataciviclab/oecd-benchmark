@@ -18,22 +18,18 @@ tab1, tab2 = st.tabs(["Entrate Fiscali", "Cuneo Fiscale"])
 
 # --- TAB 1: Entrate Fiscali ---
 with tab1:
-    st.markdown("### Entrate fiscali Italia — Evoluzione")
+    st.markdown("### Entrate fiscali Italia — Evoluzione (% PIL)")
 
     try:
         df = load_mart("tax_revenue", "mart_italia")
 
-        # Entrate totali (S13 = General government)
-        total = df[
-            (df["misura"] == "TAX_REV") &
-            (df["settore"] == "S13")
-        ][["anno", "valore"]].sort_values("anno")
-        total["valore_mld"] = total["valore"] / 1000  # Convert to billions
+        # Entrate totali (S13 = General government, T_SPLIT = totale)
+        total = df[["anno", "valore"]].sort_values("anno")
 
         chart = alt.Chart(total).mark_line(point=True).encode(
             x=alt.X("anno:Q", title="Anno"),
-            y=alt.Y("valore_mld:Q", title="Miliardi EUR"),
-            tooltip=["anno", "valore_mld"]
+            y=alt.Y("valore:Q", title="% PIL"),
+            tooltip=["anno", "valore"]
         ).properties(height=350)
 
         st.altair_chart(chart, width="stretch")
@@ -44,49 +40,70 @@ with tab1:
             latest = total[total["anno"] == total["anno"].max()]
             prev = total[total["anno"] == total["anno"].max() - 1]
             if len(latest) > 0 and len(prev) > 0:
-                val = latest["valore_mld"].values[0]
-                prev_val = prev["valore_mld"].values[0]
-                delta = (val - prev_val) / prev_val * 100
-                col1.metric(f"Entrate {int(latest['anno'].values[0])}", f"€{val:.1f}B", f"{delta:+.1f}%")
+                val = latest["valore"].values[0]
+                prev_val = prev["valore"].values[0]
+                delta = val - prev_val
+                col1.metric(f"Entrate {int(latest['anno'].values[0])}", f"{val:.1f}% PIL", f"{delta:+.1f} pp")
             # Crescita: ultimo anno vs 10 anni fa
             if len(total) > 2:
                 max_year = total["anno"].max()
                 recent = total[total["anno"] == max_year]
                 old = total[total["anno"] == max_year - 10]
                 if len(recent) > 0 and len(old) > 0:
-                    val_r = recent["valore_mld"].values[0]
-                    val_o = old["valore_mld"].values[0]
-                    growth = (val_r / val_o - 1) * 100 if val_o > 0 else 0
-                    col2.metric("Crescita 10 anni", f"{growth:+.0f}%")
+                    val_r = recent["valore"].values[0]
+                    val_o = old["valore"].values[0]
+                    delta10 = val_r - val_o
+                    col2.metric("Variazione 10 anni", f"{delta10:+.1f} pp")
     except Exception as e:
         st.warning(f"Errore: {e}")
 
     st.markdown("---")
 
-    st.markdown("### Composizione entrate per settore (Italia, 2022)")
+    st.markdown("### Benchmark OCSE — Entrate fiscali (% PIL)")
 
     try:
-        from sources import query as _query
-        composition = _query("tax_revenue", """
-            SELECT settore_label, MAX(valore) as valore
-            FROM clean_input
-            WHERE anno = 2022
-              AND settore != 'S13'
-              AND valore > 0
-            GROUP BY settore_label
-            ORDER BY valore
-        """)
+        bm = load_mart("tax_revenue", "mart_benchmark")
+        latest_year = bm["anno"].max()
+        latest = bm[bm["anno"] == latest_year].sort_values("valore", ascending=False)
 
-        chart2 = alt.Chart(composition).mark_bar().encode(
-            x=alt.X("valore:Q", title="EUR"),
-            y=alt.Y("settore_label:N", title="Settore", sort="-x"),
-            color=alt.value("#2a9d8f"),
-            tooltip=["settore_label", "valore"]
-        ).properties(height=300)
+        country_names = {
+            "ITA": "Italia", "DEU": "Germania", "FRA": "Francia",
+            "GBR": "UK", "USA": "USA", "JPN": "Giappone", "CAN": "Canada",
+            "DNK": "Danimarca", "BEL": "Belgio", "AUT": "Austria",
+            "NOR": "Norvegia", "SWE": "Svezia", "FIN": "Finlandia",
+            "NLD": "Paesi Bassi", "ESP": "Spagna", "PRT": "Portogallo",
+            "GRC": "Grecia", "IRL": "Irlanda", "LUX": "Lussemburgo",
+            "CHE": "Svizzera", "ISL": "Islanda", "AUS": "Australia",
+            "NZL": "Nuova Zelanda", "KOR": "Corea del Sud",
+            "OECD_REP": "Media OCSE"
+        }
+        latest["paese_en"] = latest["paese"]
+        latest["paese"] = latest["ref_area"].map(country_names).fillna(latest["paese"])
 
-        st.altair_chart(chart2, width="stretch")
+        chart = alt.Chart(latest).mark_bar().encode(
+            x=alt.X("valore:Q", title="% PIL"),
+            y=alt.Y("paese:N", title="Paese", sort="-x"),
+            color=alt.condition(
+                alt.datum.ref_area == "ITA",
+                alt.value("#e63946"),
+                alt.value("#457b9d")
+            ),
+            tooltip=["paese", "paese_en", "anno", "valore"]
+        ).properties(height=500)
+
+        st.altair_chart(chart, width="stretch")
+
+        # KPI Italia
+        ita = latest[latest["ref_area"] == "ITA"]
+        oecd = latest[latest["ref_area"] == "OECD_REP"]
+        if len(ita) > 0:
+            col1, col2 = st.columns(2)
+            col1.metric("Italia", f"{ita['valore'].values[0]:.1f}% PIL")
+            if len(oecd) > 0:
+                delta = ita["valore"].values[0] - oecd["valore"].values[0]
+                col2.metric("vs Media OCSE", f"{delta:+.1f} pp")
     except Exception as e:
-        st.warning(f"Errore: {e}")
+        st.warning(f"Errore benchmark: {e}")
 
 # --- TAB 2: Cuneo Fiscale ---
 with tab2:

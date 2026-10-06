@@ -1,7 +1,6 @@
 -- mart_italia.sql: Entrate fiscali Italia — overview
 --
--- Entrate fiscali totali (valori assoluti EUR)
--- Prendiamo il massimo per anno (totale, non sotto-categorie)
+-- Entrate fiscali totali (T_SPLIT) come % del PIL
 
 SELECT
     anno,
@@ -11,9 +10,11 @@ SELECT
     misura_label,
     settore,
     unita,
-    MAX(valore) AS valore
+    valore
 FROM clean_input
 WHERE ref_area = 'ITA'
   AND settore = 'S13'
-GROUP BY anno, ref_area, paese, misura, misura_label, settore, unita
+  AND misura = 'TAX_REV'
+  AND unita = 'PT_B1GQ'
+  AND revenue_category = 'T_SPLIT'
 ORDER BY anno

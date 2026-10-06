@@ -6,16 +6,18 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 
 ## Cosa contengono
 
-| Dataset | Righe | Periodo | Paesi | Granularità |
-|---|---|---|---|---|
-| Emissioni GHG | 2.800 | 1990–2024 | Globale (FUA) | Città |
-| PIL FUA | 2.250 | 2000–2022 | Europa (FUA) | Città |
-| Spesa Sanitaria | 6.755 | 1988–2025 | Italia | Nazionale |
-| PIL Regionale | 7.575 | 2000–2024 | Globale (TL2) | Regioni |
-| Istruzione | 3.186 | 2000–2025 | Globale (TL2) | Regioni |
-| Disoccupazione | 233 | 2000–2025 | G7 + OCSE | Nazionale |
-| Entrate Fiscali | 4.707 | 2000–2024 | Italia | Nazionale |
-| Cuneo Fiscale | 3.120 | 2000–2025 | G7 | Nazionale |
+| Dataset | Righe | Periodo | Paesi | Unità | Granularità |
+|---|---|---|---|---|---|
+| Emissioni GHG | 2.800 | 1990–2024 | Globale (FUA) | kt CO₂ eq | Città |
+| PIL FUA | 2.250 | 2000–2022 | Europa (FUA) | MLD EUR | Città |
+| Spesa Sanitaria | 6.755 | 1988–2025 | Italia | % PIL | Nazionale |
+| PIL Regionale | 7.575 | 2000–2024 | Globale (TL2) | MLD USD | Regioni |
+| Istruzione | 3.186 | 2000–2025 | Globale (TL2) | % | Regioni |
+| Disoccupazione | 233 | 2000–2025 | G7 + OCSE | % | Nazionale |
+| Entrate Fiscali | 1.106 | 1965–2022 | 20 OCSE | % PIL | Nazionale |
+| Cuneo Fiscale | 3.120 | 2000–2025 | G7 | % | Nazionale |
+
+> **Nota unità**: Entrate fiscali sono espresse come **% del PIL** (T_SPLIT, settore S13). Non più miliardi EUR — il cambio rende il confronto internazionale diretto.
 
 **Fonte**: [OECD Data Explorer](https://data-explorer.oecd.org/) — SDMX API pubblica, nessuna chiave richiesta.
 
