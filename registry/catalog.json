@@ -1,0 +1,152 @@
+{
+  "source_id": "oecd",
+  "generated_at": "2026-10-11T17:34:00+00:00",
+  "report_version": 1,
+  "timing": {},
+  "identity": {
+    "source_id": "oecd",
+    "protocol": "sdmx",
+    "base_url": "https://sdmx.oecd.org/public/rest/dataflow/all/all/latest",
+    "source_kind": "catalog",
+    "observation_mode": "catalog-watch",
+    "verdict": "go",
+    "note": "Catalogo SDMX OECD (tutte le agenzie). I dataset usano agenzie specifiche (CFE.EDS, ENV.EPI, CTP.TPS, SDD.TPS, ELS.HD).",
+    "last_probed": "2026-10-11"
+  },
+  "health": {
+    "radar_status": "GREEN",
+    "http_code": "200",
+    "note": null,
+    "ssl_fallback": false,
+    "streak": 1
+  },
+  "inventory": {
+    "total_items": 1548,
+    "method": null,
+    "captured_at": "2026-10-11T17:33:54+00:00",
+    "baseline_value": null,
+    "baseline_date": null,
+    "freshness_hours": 0.0,
+    "delta": null,
+    "delta_pct": 0.0,
+    "formats": {
+      "SDMX": 1548
+    }
+  },
+  "source_check": {
+    "last_run": "2026-10-11T17:34:00Z",
+    "total_scored": 1509,
+    "reachable": 1509,
+    "csv_count": 0,
+    "with_csv_schema": 0,
+    "avg_readiness": 5.0,
+    "top_items": [
+      {
+        "name": "oecd/access-to-public-transport-fuas",
+        "score": 5,
+        "year_range": null,
+        "format": "SDMX",
+        "reachable": true
+      },
+      {
+        "name": "oecd/access-to-services-fuas",
+        "score": 5,
+        "year_range": null,
+        "format": "SDMX",
+        "reachable": true
+      },
+      {
+        "name": "oecd/access-to-social-protection",
+        "score": 5,
+        "year_range": null,
+        "format": "SDMX",
+        "reachable": true
+      },
+      {
+        "name": "oecd/accounting-and-reporting-for-the-fiscal-costs-of-natural-disasters",
+        "score": 5,
+        "year_range": null,
+        "format": "SDMX",
+        "reachable": true
+      },
+      {
+        "name": "oecd/actual-salaries-of-teachers-and-school-heads-full-dataset",
+        "score": 5,
+        "year_range": null,
+        "format": "SDMX",
+        "reachable": true
+      }
+    ],
+    "coverage_pct": 97.5,
+    "formato_aperto": {
+      "score": 5.0,
+      "perc_aperto": 0.0,
+      "perc_reachable": 100.0,
+      "total": 1509,
+      "fonte": "source_check"
+    }
+  },
+  "datasets_in_use": [
+    {
+      "slug": "oecd_air_emissions",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_education_attainment",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_forest",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_fua_economy",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_fua_ghg",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_green_transition",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_health_expenditure",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_regional_gdp",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_tax_revenue",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_taxing_wages",
+      "status": "incubating"
+    },
+    {
+      "slug": "oecd_unemployment",
+      "status": "incubating"
+    }
+  ],
+  "signals": [
+    {
+      "type": "validated_metrics",
+      "result": "stabile",
+      "detail": "Metriche da validated.parquet."
+    }
+  ],
+  "operational_verdict": {
+    "label": "STABLE",
+    "score": "stable",
+    "triggers": [
+      "all_green"
+    ],
+    "next_action": null
+  },
+  "repo": "oecd-benchmark",
+  "catalog_schema_version": 1
+}
