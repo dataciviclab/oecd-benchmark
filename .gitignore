@@ -45,3 +45,4 @@ Thumbs.db
 .coverage
 htmlcov/
 batch.txt
+out/so/
