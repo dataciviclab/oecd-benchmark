@@ -40,6 +40,10 @@ dev = [
 pipeline = [
     "dataciviclab-toolkit @ git+https://github.com/dataciviclab/toolkit.git",
 ]
+# Catalog engine per-repo (probe, inventory, source report).
+observatory = [
+    "dataciviclab-source-observatory @ git+https://github.com/dataciviclab/source-observatory.git@main",
+]
 
 [project.urls]
 Home = "https://github.com/dataciviclab/oecd-benchmark"
@@ -55,3 +59,11 @@ markers = [
 
 [tool.toolkit.extends]
 source_id = "oecd-benchmark"
+
+[tool.observatory]
+source_id = "oecd"
+protocol = "sdmx"
+base_url = "https://sdmx.oecd.org/public/rest/dataflow/all/all/latest"
+observation_mode = "catalog-watch"
+verdict = "go"
+note = "Catalogo SDMX OECD (tutte le agenzie). I dataset usano agenzie specifiche (CFE.EDS, ENV.EPI, CTP.TPS, SDD.TPS, ELS.HD)."
