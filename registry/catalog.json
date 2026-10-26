@@ -1,6 +1,6 @@
 {
   "source_id": "oecd",
-  "generated_at": "2026-10-19T10:23:45+00:00",
+  "generated_at": "2026-10-26T10:38:20+00:00",
   "report_version": 1,
   "timing": {},
   "identity": {
@@ -11,32 +11,32 @@
     "observation_mode": "catalog-watch",
     "verdict": "go",
     "note": "Catalogo SDMX OECD (tutte le agenzie). I dataset usano agenzie specifiche (CFE.EDS, ENV.EPI, CTP.TPS, SDD.TPS, ELS.HD).",
-    "last_probed": "2026-10-19"
+    "last_probed": "2026-10-26"
   },
   "health": {
     "radar_status": "GREEN",
     "http_code": "200",
     "note": null,
     "ssl_fallback": false,
-    "streak": 2
+    "streak": 3
   },
   "inventory": {
-    "total_items": 1550,
+    "total_items": 1552,
     "method": null,
-    "captured_at": "2026-10-19T10:23:42+00:00",
+    "captured_at": "2026-10-26T10:38:17+00:00",
     "baseline_value": null,
     "baseline_date": null,
     "freshness_hours": 0.0,
     "delta": null,
     "delta_pct": 0.0,
     "formats": {
-      "SDMX": 1550
+      "SDMX": 1552
     }
   },
   "source_check": {
-    "last_run": "2026-10-19T10:23:45Z",
-    "total_scored": 1510,
-    "reachable": 1510,
+    "last_run": "2026-10-26T10:38:20Z",
+    "total_scored": 1512,
+    "reachable": 1512,
     "csv_count": 0,
     "with_csv_schema": 0,
     "avg_readiness": 5.0,
@@ -82,7 +82,7 @@
       "score": 5.0,
       "perc_aperto": 0.0,
       "perc_reachable": 100.0,
-      "total": 1510,
+      "total": 1512,
       "fonte": "source_check"
     }
   },
