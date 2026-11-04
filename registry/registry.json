@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repo": "oecd-benchmark",
   "source_repo": "dataciviclab/oecd-benchmark",
-  "updated_at": "2026-11-01",
+  "updated_at": "2026-11-04",
   "datasets": [
     {
       "slug": "oecd_air_emissions",
@@ -726,6 +726,97 @@
       ]
     },
     {
+      "slug": "oecd_share_prices",
+      "name": "Oecd Share Prices",
+      "description": "Indici dei prezzi azionari (base 2015=100, mensile) per Italia e paesi benchmark — OECD Financial Market, 1955-2026 (Italia dal 1957)",
+      "source": "",
+      "source_id": "oecd",
+      "period": {
+        "start": 1955,
+        "end": 2026
+      },
+      "tags": [
+        "mercati",
+        "azioni",
+        "borsa",
+        "indici",
+        "prezzi",
+        "oecd",
+        "benchmark"
+      ],
+      "category": "economia",
+      "columns": [
+        {
+          "name": "anno",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "year"
+        },
+        {
+          "name": "mese",
+          "type": "INTEGER",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "month"
+        },
+        {
+          "name": "periodo",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "month"
+        },
+        {
+          "name": "ref_area",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "paese",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": "",
+          "semantic_type": "country_code"
+        },
+        {
+          "name": "misura",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "unita",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "base_periodo",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "valore",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        }
+      ],
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-clean/oecd-benchmark/oecd_share_prices/2026/oecd_share_prices_2026_clean.parquet",
+        "multi_file": false
+      },
+      "stage": "incubating",
+      "mart_refs": [
+        "oecd_share_prices__mart_italia",
+        "oecd_share_prices__mart_benchmark"
+      ]
+    },
+    {
       "slug": "oecd_tax_revenue",
       "name": "Oecd Tax Revenue",
       "description": "",
@@ -1193,6 +1284,26 @@
       }
     },
     {
+      "slug": "oecd_share_prices__mart_benchmark",
+      "dataset": "oecd_share_prices",
+      "table": "mart_benchmark",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_share_prices/2026/mart_benchmark.parquet",
+        "multi_file": false
+      }
+    },
+    {
+      "slug": "oecd_share_prices__mart_italia",
+      "dataset": "oecd_share_prices",
+      "table": "mart_italia",
+      "location": {
+        "type": "gcs",
+        "path": "gs://dataciviclab-mart/oecd-benchmark/oecd_share_prices/2026/mart_italia.parquet",
+        "multi_file": false
+      }
+    },
+    {
       "slug": "oecd_tax_revenue__mart_benchmark",
       "dataset": "oecd_tax_revenue",
       "table": "mart_benchmark",
@@ -1503,6 +1614,37 @@
       }
     },
     {
+      "id": "oecd_share_prices",
+      "source_id": "oecd",
+      "status": "ok",
+      "label": "oecd_share_prices",
+      "detail": "anno 2026 — mart: si",
+      "action": "",
+      "run": {
+        "run_id": "20261104T184834Z_aa613c59",
+        "year": 2026,
+        "status": "SUCCESS",
+        "quality_score": {
+          "raw": 100,
+          "clean": 95,
+          "mart": 100
+        },
+        "output_rows": {
+          "raw": 4663,
+          "clean": 4663,
+          "mart": 1228
+        },
+        "output_bytes": {
+          "raw": 1196200,
+          "clean": 37152,
+          "mart": 13716
+        },
+        "started_at": "2026-11-04T18:48:34.266878+00:00",
+        "finished_at": "2026-11-04T18:48:36.425827+00:00",
+        "duration_seconds": 2.159
+      }
+    },
+    {
       "id": "oecd_tax_revenue",
       "source_id": "oecd",
       "status": "ok",
@@ -1643,6 +1785,12 @@
             "semantic_type": "country_code"
           },
           {
+            "slug": "oecd_share_prices",
+            "name": "Oecd Share Prices",
+            "column": "paese",
+            "semantic_type": "country_code"
+          },
+          {
             "slug": "oecd_tax_revenue",
             "name": "Oecd Tax Revenue",
             "column": "paese",
@@ -1662,7 +1810,7 @@
           }
         ],
         "types": {
-          "country_code": 6
+          "country_code": 7
         }
       },
       "Tempo": {
@@ -1718,6 +1866,24 @@
             "semantic_type": "year"
           },
           {
+            "slug": "oecd_share_prices",
+            "name": "Oecd Share Prices",
+            "column": "anno",
+            "semantic_type": "year"
+          },
+          {
+            "slug": "oecd_share_prices",
+            "name": "Oecd Share Prices",
+            "column": "mese",
+            "semantic_type": "month"
+          },
+          {
+            "slug": "oecd_share_prices",
+            "name": "Oecd Share Prices",
+            "column": "periodo",
+            "semantic_type": "month"
+          },
+          {
             "slug": "oecd_tax_revenue",
             "name": "Oecd Tax Revenue",
             "column": "anno",
@@ -1737,7 +1903,8 @@
           }
         ],
         "types": {
-          "year": 11
+          "year": 12,
+          "month": 2
         }
       }
     },
