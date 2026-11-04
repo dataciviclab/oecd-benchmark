@@ -1,0 +1,64 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "oecd_share_prices"
+  source_id: "oecd"
+  tags: [mercati, azioni, borsa, indici, prezzi, oecd, benchmark]
+  category: economia
+  description: "Indici dei prezzi azionari (base 2015=100, mensile) per Italia e paesi benchmark — OECD Financial Market, 1955-2026 (Italia dal 1957)"
+  years: [2026]
+  time_coverage:
+    start_year: 1955
+    end_year: 2026
+
+raw:
+  output_policy: overwrite
+  sources:
+    # Pull mirato: la key SDMX seleziona REF_AREA (6 paesi) + FREQ=M + MEASURE=SHARE.
+    # Il dataflow completo contiene anche tassi e aggregati monetari: non ci servono.
+    - name: "sdmx_share_prices"
+      type: "sdmx"
+      args:
+        agency: "OECD.SDD.STES"
+        flow: "DSD_STES@DF_FINMARK"
+        version: "4.0"
+        filters:
+          FREQ: "M"
+          MEASURE: "SHARE"
+          UNIT_MEASURE: "IX"
+          REF_AREA: ["ITA", "FRA", "DEU", "ESP", "GBR", "USA"]
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: auto
+    mode: latest
+    delim: ","
+    encoding: utf-8
+    header: true
+    nullstr: "Not applicable"
+  required_columns: [anno, mese, periodo, ref_area, paese, unita, base_periodo, valore]
+  validate:
+    not_null: [anno, ref_area, valore]
+    min_rows: 1000
+
+mart:
+  tables:
+    - name: "mart_italia"
+      sql: "sql/mart_italia.sql"
+    - name: "mart_benchmark"
+      sql: "sql/mart_benchmark.sql"
+  required_tables: ["mart_italia", "mart_benchmark"]
+  validate:
+    table_rules:
+      mart_italia:
+        not_null: [anno, mese, valore]
+        min_rows: 700
+      mart_benchmark:
+        not_null: [anno, ref_area, paese, media_annua]
+        min_rows: 100
+
+validation:
+  fail_on_error: true

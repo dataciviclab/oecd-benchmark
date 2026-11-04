@@ -21,6 +21,7 @@ DATASETS = {
     "unemployment": "oecd_unemployment",
     "tax_revenue": "oecd_tax_revenue",
     "taxing_wages": "oecd_taxing_wages",
+    "share_prices": "oecd_share_prices",
 }
 
 

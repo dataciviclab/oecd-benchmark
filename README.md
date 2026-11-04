@@ -16,6 +16,7 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 | Disoccupazione | 233 | 2000–2025 | G7 + OCSE | % | Nazionale |
 | Entrate Fiscali | 1.106 | 1965–2022 | 20 OCSE | % PIL | Nazionale |
 | Cuneo Fiscale | 3.120 | 2000–2025 | G7 | % | Nazionale |
+| Prezzi Azionari | 4.663 | 1955–2026 | Italia + 5 benchmark | Indice 2015=100 | Nazionale |
 
 > **Nota unità**: Entrate fiscali sono espresse come **% del PIL** (T_SPLIT, settore S13). Non più miliardi EUR — il cambio rende il confronto internazionale diretto.
 
