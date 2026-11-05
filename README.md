@@ -21,6 +21,8 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 | Cuneo Fiscale | 123.968 | 2000–2025 | G7 | % | Nazionale |
 | Prezzi Azionari | 4.663 | 1955–2026 | Italia + 5 benchmark | Indice 2015=100 | Nazionale |
 
+> **Nota metriche**: `Righe (clean)` = righe del parquet **clean** pubblicato (non dei mart). La colonna è cambiata rispetto alle versioni precedenti (che riportavano i mart): i numeri non sono confrontabili col passato.
+
 > **Nota unità**: Entrate fiscali sono espresse come **% del PIL** (T_SPLIT, settore S13). Non più miliardi EUR — il cambio rende il confronto internazionale diretto.
 
 **Fonte**: [OECD Data Explorer](https://data-explorer.oecd.org/) — SDMX API pubblica, nessuna chiave richiesta.

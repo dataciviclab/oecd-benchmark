@@ -3,24 +3,24 @@
 ## Contesto
 Il Lab ha forte copertura su dati italiani (ISTAT, Eurostat, ANAC, ecc.) ma manca di benchmark internazionali. L'API OECD (sdmx.oecd.org) fornisce 1.548 dataflows con dati comparativi su economia, ambiente, salute, istruzione, governance.
 
-## Stato attuale (aggiornato 2026-09-27)
+## Stato attuale (aggiornato 2026-11-05)
 
 ### Dataset implementati — Fase 1 (ENV.EPI)
 | Dataset | Flow |Dims | Stato |
 |---|---|---|---|
-| `oecd-env-epi-air-emissions` | `DSD_AIR_EMISSIONS@DF_AIR_EMISSIONS` | 5 | ✅ 62 righe mart |
-| `oecd-env-epi-green-transition` | `DSD_GREEN_TRANSITION@DF_GREEN_TRANSITION` | 4 | ✅ 59 righe mart |
+| `oecd-env-epi-air-emissions` | `DSD_AIR_EMISSIONS@DF_AIR_EMISSIONS` | 5 | ✅ 245 righe mart |
+| `oecd-env-epi-green-transition` | `DSD_GREEN_TRANSITION@DF_GREEN_TRANSITION` | 4 | ✅ 67 righe mart |
 | `oecd-env-epi-forest` | `DSD_FOREST@DF_FOREST` | 4 | ✅ 49 righe mart |
-| `oecd-health-expenditure` | `DSD_SHA@DF_SHA` | 12 | ✅ 168 righe mart |
+| `oecd-health-expenditure` | `DSD_SHA@DF_SHA` | 12 | ✅ 2.723 righe mart_italia |
 
 ### Dataset implementati — Fase 2 (CFE.EDS + benchmark)
 | Dataset | Flow |Dims | Stato |
 |---|---|---|---|
-| `oecd-fua-environment-ghg` | `DSD_FUA_ENV@DF_GHG,1.5` | 8 | ✅ 1.6M clean, 5.7K mart_italia, 42K mart_benchmark |
-| `oecd-fua-economy` | `DSD_FUA_ECO@DF_ECONOMY,1.1` | 5 | ✅ 58K clean, 2.2K mart_italia, 660 mart_benchmark |
-| `oecd-health-expenditure` | `DSD_SHA@DF_SHA,1.1` | 12 | ✅ 71K clean, 6.7K mart_italia, 6.7K mart_benchmark |
-| `oecd-regional-gdp` | `DSD_REG_ECO@DF_GDP,2.4` | 8 | ✅ 971K clean, 7.5K mart_italia, 211K mart_benchmark |
-| `oecd-education-attainment` | `DSD_REG_EDU@DF_ATTAIN,2.5` | 10 | ✅ 338K clean, 3.1K mart_italia, 10K mart_benchmark |
+| `oecd-fua-environment-ghg` | `DSD_FUA_ENV@DF_GHG,1.5` | 8 | ✅ 1.6M clean, 2.8K mart_italia, 41K mart_benchmark |
+| `oecd-fua-economy` | `DSD_FUA_ECO@DF_ECONOMY,1.1` | 5 | ✅ 57K clean, 2.3K mart_italia, 660 mart_benchmark |
+| `oecd-health-expenditure` | `DSD_SHA@DF_SHA,1.1` | 12 | ✅ 71K clean, 2.7K mart_italia, 290 mart_benchmark |
+| `oecd-regional-gdp` | `DSD_REG_ECO@DF_GDP,2.4` | 8 | ✅ 966K clean, 7.4K mart_italia, 209K mart_benchmark |
+| `oecd-education-attainment` | `DSD_REG_EDU@DF_ATTAIN,2.5` | 10 | ✅ 328K clean, 3.2K mart_italia, 9.4K mart_benchmark |
 
 ### Dataset esplorati ma non funzionanti
 | Dataset | Flow | Motivo |

@@ -105,7 +105,10 @@ try:
     df_gdp = load_mart("gdp", "mart_italia")
     regions = df_gdp[
         (df_gdp["anno"] == anno) &
-        (df_gdp["misura"] == "GDP")
+        (df_gdp["misura"] == "GDP") &
+        (df_gdp["attivita"] == "_T") &
+        (df_gdp["prezzi"] == "V") &
+        (df_gdp["unita"] == "USD_PPP")
     ].sort_values("valore", ascending=False).head(10)
 
     chart4 = alt.Chart(regions).mark_bar().encode(
