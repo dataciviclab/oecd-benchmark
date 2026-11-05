@@ -14,7 +14,7 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 | Transizione verde | 1.150 | 1990–2024 | Italia | mista | Nazionale |
 | PIL FUA | 57.331 | 2000–2023 | Europa (FUA) | USD PPP | Città |
 | PIL Regionale | 966.046 | 1980–2025 | Globale (TL2) | USD PPP | Regioni |
-| Spesa Sanitaria | 71.240 | 1970–2025 | Italia | % PIL, USD PPP | Nazionale |
+| Spesa Sanitaria | 2.466.028 | 1970–2025 | 8 paesi OCSE (G7 + Spagna) | % PIL, USD PPP | Nazionale |
 | Istruzione | 328.485 | 2000–2025 | Globale (TL2) | % | Regioni |
 | Disoccupazione | 323.577 | 1953–2026 | G7 + OCSE | % | Nazionale |
 | Entrate Fiscali | 1.496.211 | 1965–2022 | 20 OCSE | % PIL | Nazionale |

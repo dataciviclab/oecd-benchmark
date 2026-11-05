@@ -3,8 +3,6 @@
 -- Confronto spesa sanitaria totale per paese (funzione totale, schema totale),
 -- prezzi correnti. mode_provision='_T' e price_base IN ('V','_Z') evitano le
 -- righe duplicate da serie con prezzi/modi diversi sulla stessa chiave.
--- NOTA: il raw è filtrato REF_AREA=ITA, quindi oggi il "benchmark" contiene
--- solo l'Italia (follow-up: rimuovere il filtro per un confronto reale).
 
 SELECT
     anno,

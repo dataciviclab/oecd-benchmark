@@ -21,7 +21,7 @@ raw:
         flow: "DSD_SHA@DF_SHA"
         version: "1.1"
         filters:
-          REF_AREA: "ITA"
+          REF_AREA: ["ITA", "DEU", "FRA", "ESP", "GBR", "USA", "JPN", "CAN"]
           FREQ: "A"
       primary: true
 
@@ -34,6 +34,8 @@ clean:
     encoding: utf-8
     header: true
     all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # il CSV OECD usa virgolette; l'auto-detect sbaglia il dialect
   required_columns: [anno, ref_area, paese, misura, unita, financing_scheme, function_code, mode_provision, price_base, valore]
   validate:
     primary_key: [anno, ref_area, misura, unita, financing_scheme, financing_scheme_rev, function_code, mode_provision, provider, factor_provision, asset_type, price_base]
