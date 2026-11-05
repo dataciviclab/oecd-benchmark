@@ -68,7 +68,7 @@ try:
         (df["unita"] == "USD_PPP_PS") &
         (df["function_code"] == "_T") &
         (df["financing_scheme"] == "_T")
-    ][["anno", "valore"]].sort_values("anno").drop_duplicates("anno")
+    ][["anno", "valore"]].sort_values("anno")
 
     chart4 = alt.Chart(procapite).mark_line(point=True).encode(
         x=alt.X("anno:Q", title="Anno"),

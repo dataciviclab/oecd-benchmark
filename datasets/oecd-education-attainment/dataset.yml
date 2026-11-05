@@ -9,7 +9,7 @@ dataset:
   years: [2026]
   time_coverage:
     start_year: 2000
-    end_year: 2023
+    end_year: 2025
 
 raw:
   output_policy: overwrite
@@ -32,8 +32,12 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
-  required_columns: [anno, ref_area, livello_territoriale, misura, eta, sesso, educazione, unita, valore]
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # CSV OECD: auto-detect sbaglia il dialect (righe perse)
+  required_columns: [anno, ref_area, livello_territoriale, misura, eta, sesso, educazione, unita, operazione_statistica, valore]
   validate:
+    primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, eta, sesso, educazione, unita, operazione_statistica]
     not_null: [anno, ref_area]
     min_rows: 100
 
@@ -47,9 +51,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, eta, sesso, educazione, unita]
         not_null: [anno, ref_area]
         min_rows: 30
       mart_benchmark:
+        primary_key: [anno, ref_area, livello_territoriale, misura, eta, sesso, educazione, unita]
         not_null: [anno, paese]
         min_rows: 20
 

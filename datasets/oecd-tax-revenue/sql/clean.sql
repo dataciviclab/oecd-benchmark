@@ -6,16 +6,16 @@
 SELECT
     cast_int(TIME_PERIOD) AS anno,
     normalize_string(REF_AREA) AS ref_area,
-    normalize_string("Reference area") AS paese,
+    normalize_string(REF_AREA_label) AS paese,
     normalize_string(MEASURE) AS misura,
-    normalize_string("Measure") AS misura_label,
+    normalize_string(MEASURE_label) AS misura_label,
     normalize_string(SECTOR) AS settore,
-    normalize_string("Institutional sector") AS settore_label,
+    normalize_string(SECTOR_label) AS settore_label,
     normalize_string(STANDARD_REVENUE) AS revenue_category,
-    normalize_string("Revenue category") AS revenue_category_label,
+    normalize_string(STANDARD_REVENUE_label) AS revenue_category_label,
     normalize_string(CTRY_SPECIFIC_REVENUE) AS revenue_specific,
     normalize_string(UNIT_MEASURE) AS unita,
-    normalize_string("Unit of measure") AS unita_label,
+    normalize_string(UNIT_MEASURE_label) AS unita_label,
     normalize_string(OBS_STATUS) AS obs_status,
     cast_double(OBS_VALUE) AS valore
 FROM raw_input

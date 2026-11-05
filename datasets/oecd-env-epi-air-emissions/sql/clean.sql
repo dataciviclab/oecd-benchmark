@@ -10,7 +10,7 @@
 SELECT
     cast_int(TIME_PERIOD) AS anno,
     normalize_string(POLLUTANT) AS inquinante,
-    normalize_string("Pollutant") AS inquinante_label,
+    normalize_string(POLLUTANT_label) AS inquinante_label,
     normalize_string(MEASURE) AS misura,
     normalize_string(UNIT_MEASURE) AS unita,
     cast_double(OBS_VALUE) AS valore

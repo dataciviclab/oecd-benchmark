@@ -8,8 +8,8 @@ dataset:
   category: salute
   years: [2026]
   time_coverage:
-    start_year: 2000
-    end_year: 2023
+    start_year: 1970
+    end_year: 2025
 
 raw:
   output_policy: overwrite
@@ -21,7 +21,7 @@ raw:
         flow: "DSD_SHA@DF_SHA"
         version: "1.1"
         filters:
-          REF_AREA: "ITA"
+          REF_AREA: ["ITA", "DEU", "FRA", "ESP", "GBR", "USA", "JPN", "CAN"]
           FREQ: "A"
       primary: true
 
@@ -33,8 +33,12 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
-  required_columns: [anno, ref_area, paese, misura, unita, financing_scheme, function_code, valore]
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # il CSV OECD usa virgolette; l'auto-detect sbaglia il dialect
+  required_columns: [anno, ref_area, paese, misura, unita, financing_scheme, function_code, mode_provision, price_base, valore]
   validate:
+    primary_key: [anno, ref_area, misura, unita, financing_scheme, financing_scheme_rev, function_code, mode_provision, provider, factor_provision, asset_type, price_base]
     not_null: [anno, misura]
     min_rows: 50
 
@@ -48,9 +52,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, ref_area, misura, unita, financing_scheme, function_code, provider]
         not_null: [anno, misura]
         min_rows: 30
       mart_benchmark:
+        primary_key: [anno, ref_area, misura, unita]
         not_null: [anno, paese]
         min_rows: 20
 

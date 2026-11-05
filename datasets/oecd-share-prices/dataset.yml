@@ -38,9 +38,13 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # CSV OECD: auto-detect sbaglia il dialect (righe perse)
     nullstr: "Not applicable"
   required_columns: [anno, mese, periodo, ref_area, paese, unita, base_periodo, valore]
   validate:
+    primary_key: [anno, mese, ref_area, misura, unita, base_periodo]
     not_null: [anno, ref_area, valore]
     min_rows: 1000
 
@@ -54,9 +58,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, mese]
         not_null: [anno, mese, valore]
         min_rows: 700
       mart_benchmark:
+        primary_key: [anno, ref_area]
         not_null: [anno, ref_area, paese, media_annua]
         min_rows: 100
 

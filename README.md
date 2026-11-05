@@ -6,17 +6,22 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 
 ## Cosa contengono
 
-| Dataset | Righe | Periodo | Paesi | Unità | Granularità |
+| Dataset | Righe (clean) | Periodo | Copertura | Unità | Granularità |
 |---|---|---|---|---|---|
-| Emissioni GHG | 2.800 | 1990–2024 | Globale (FUA) | kt CO₂ eq | Città |
-| PIL FUA | 2.250 | 2000–2022 | Europa (FUA) | MLD EUR | Città |
-| Spesa Sanitaria | 6.755 | 1988–2025 | Italia | % PIL | Nazionale |
-| PIL Regionale | 7.575 | 2000–2024 | Globale (TL2) | MLD USD | Regioni |
-| Istruzione | 3.186 | 2000–2025 | Globale (TL2) | % | Regioni |
-| Disoccupazione | 233 | 2000–2025 | G7 + OCSE | % | Nazionale |
-| Entrate Fiscali | 1.106 | 1965–2022 | 20 OCSE | % PIL | Nazionale |
-| Cuneo Fiscale | 3.120 | 2000–2025 | G7 | % | Nazionale |
+| Emissioni GHG (FUA) | 1.592.640 | 1990–2024 | Globale (FUA) | t CO₂ eq | Città |
+| Emissioni inquinanti (EPI) | 3.920 | 1990–2024 | Italia | t, indici | Nazionale |
+| Foreste | 49 | 1950–2015 | Italia | m³, % | Nazionale |
+| Transizione verde | 1.150 | 1990–2024 | Italia | mista | Nazionale |
+| PIL FUA | 57.331 | 2000–2023 | Europa (FUA) | USD PPP | Città |
+| PIL Regionale | 966.046 | 1980–2025 | Globale (TL2) | USD PPP | Regioni |
+| Spesa Sanitaria | 2.466.028 | 1970–2025 | 8 paesi OCSE (G7 + Spagna) | % PIL, USD PPP | Nazionale |
+| Istruzione | 328.485 | 2000–2025 | Globale (TL2) | % | Regioni |
+| Disoccupazione | 323.577 | 1953–2026 | G7 + OCSE | % | Nazionale |
+| Entrate Fiscali | 1.496.211 | 1965–2022 | 20 OCSE | % PIL | Nazionale |
+| Cuneo Fiscale | 123.968 | 2000–2025 | G7 | % | Nazionale |
 | Prezzi Azionari | 4.663 | 1955–2026 | Italia + 5 benchmark | Indice 2015=100 | Nazionale |
+
+> **Nota metriche**: `Righe (clean)` = righe del parquet **clean** pubblicato (non dei mart). La colonna è cambiata rispetto alle versioni precedenti (che riportavano i mart): i numeri non sono confrontabili col passato.
 
 > **Nota unità**: Entrate fiscali sono espresse come **% del PIL** (T_SPLIT, settore S13). Non più miliardi EUR — il cambio rende il confronto internazionale diretto.
 

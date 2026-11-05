@@ -139,6 +139,14 @@ class TestValidationRules:
         assert "min_rows" in validate, f"{name}: clean.validate manca min_rows"
         assert validate["min_rows"] > 0, f"{name}: min_rows deve essere > 0"
 
+    def test_clean_has_primary_key(self, dataset_entry):
+        """primary_key = guardrail anti-duplicati: la fonte SDMX ha dimensioni che
+        collassano sulla stessa chiave se non proiettate nel clean."""
+        name, path, data = dataset_entry
+        validate = data.get("clean", {}).get("validate", {})
+        pk = validate.get("primary_key", [])
+        assert pk, f"{name}: clean.validate.primary_key mancante"
+
     def test_mart_table_rules(self, dataset_entry):
         name, path, data = dataset_entry
         mart = data.get("mart", {})
@@ -147,6 +155,15 @@ class TestValidationRules:
         for table in mart.get("tables", []):
             tname = table["name"]
             assert tname in table_rules, f"{name}: mart manca table_rules per '{tname}'"
+
+    def test_mart_table_rules_have_primary_key(self, dataset_entry):
+        name, path, data = dataset_entry
+        mart = data.get("mart", {})
+        table_rules = mart.get("validate", {}).get("table_rules", {})
+        for table in mart.get("tables", []):
+            tname = table["name"]
+            pk = table_rules.get(tname, {}).get("primary_key", [])
+            assert pk, f"{name}: mart '{tname}' senza primary_key"
 
 
 # -- Contract: semantic filters (tax revenue) --

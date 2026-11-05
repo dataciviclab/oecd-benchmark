@@ -1,6 +1,6 @@
 -- mart_benchmark.sql: Disoccupazione — Italia vs G7 vs OCSE
 --
--- Confronto tasso disoccupazione totale per paese
+-- Confronto tasso disoccupazione totale per paese, serie destagionalizzata.
 
 SELECT
     anno,
@@ -12,5 +12,6 @@ WHERE ref_area IN ('ITA', 'DEU', 'FRA', 'GBR', 'USA', 'JPN', 'CAN', 'OECD')
   AND sesso = '_T'
   AND eta = 'Y_GE15'
   AND unita = 'PT_LF_SUB'
+  AND aggiustamento = 'Y'
 GROUP BY anno, ref_area, paese
 ORDER BY anno, ref_area
