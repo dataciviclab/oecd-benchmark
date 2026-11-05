@@ -33,6 +33,8 @@ clean:
     encoding: utf-8
     header: true
     all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # CSV OECD: auto-detect sbaglia il dialect (righe perse)
     nullstr: "Not applicable"
   required_columns: [anno, mese_str, ref_area, paese, misura, trasformazione, aggiustamento, valore]
   validate:

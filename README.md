@@ -8,7 +8,7 @@ Questi dati rispondono a domande concrete: quanto inquina Roma rispetto a Londra
 
 | Dataset | Righe (clean) | Periodo | Copertura | Unità | Granularità |
 |---|---|---|---|---|---|
-| Emissioni GHG (FUA) | 1.586.970 | 1990–2024 | Globale (FUA) | t CO₂ eq | Città |
+| Emissioni GHG (FUA) | 1.592.640 | 1990–2024 | Globale (FUA) | t CO₂ eq | Città |
 | Emissioni inquinanti (EPI) | 3.920 | 1990–2024 | Italia | t, indici | Nazionale |
 | Foreste | 49 | 1950–2015 | Italia | m³, % | Nazionale |
 | Transizione verde | 1.150 | 1990–2024 | Italia | mista | Nazionale |

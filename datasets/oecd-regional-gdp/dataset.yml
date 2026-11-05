@@ -33,6 +33,8 @@ clean:
     encoding: utf-8
     header: true
     all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
+    quote: '"'
+    escape: '"'  # CSV OECD: auto-detect sbaglia il dialect (righe perse)
   required_columns: [anno, ref_area, livello_territoriale, misura, attivita, prezzi, unita, valore]
   validate:
     primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, attivita, prezzi, unita]
