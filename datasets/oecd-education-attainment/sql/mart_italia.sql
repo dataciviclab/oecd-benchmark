@@ -1,6 +1,7 @@
 -- mart_italia.sql: Istruzione popolazione italiana
 --
--- Vista Italia: livello istruzione per età e sesso
+-- Vista Italia: livello istruzione per età e sesso.
+-- operazione_statistica='MEAN' esclude gli errori standard (SE) dalla stessa chiave.
 
 SELECT
     anno,
@@ -22,4 +23,5 @@ FROM clean_input
 WHERE ref_area LIKE 'IT%'
   AND livello_territoriale = 'TL2'
   AND educazione = 'ISCED11_5T8'
+  AND operazione_statistica = 'MEAN'
 ORDER BY anno, ref_area, eta, sesso

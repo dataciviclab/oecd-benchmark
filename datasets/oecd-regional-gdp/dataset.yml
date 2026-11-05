@@ -8,8 +8,8 @@ dataset:
   category: economia
   years: [2026]
   time_coverage:
-    start_year: 2000
-    end_year: 2023
+    start_year: 1980
+    end_year: 2025
 
 raw:
   output_policy: overwrite
@@ -32,8 +32,10 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
   required_columns: [anno, ref_area, livello_territoriale, misura, attivita, prezzi, unita, valore]
   validate:
+    primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, attivita, prezzi, unita]
     not_null: [anno, ref_area]
     min_rows: 100
 
@@ -47,9 +49,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, attivita, prezzi, unita]
         not_null: [anno, ref_area]
         min_rows: 30
       mart_benchmark:
+        primary_key: [anno, ref_area, livello_territoriale, tipo_territorio, misura, attivita, prezzi, unita]
         not_null: [anno, paese]
         min_rows: 20
 

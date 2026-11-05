@@ -3,6 +3,12 @@
 **Data**: 2026-09-27
 **Dataset analizzati**: 5 (GHG, FUA Economy, Health Expenditure, Regional GDP, Education Attainment)
 
+> ⚠️ **Report parziale e datato.** Copre 5 dei **12** dataset oggi nel repo e non è
+> stato riaggiornato dopo l'aggiunta di Disoccupazione, Entrate Fiscali, Cuneo
+> Fiscale, Prezzi Azionari, Emissioni inquinanti (EPI), Foreste e Transizione
+> verde. I numeri riflettono i dati al 2026-09-27: usare i parquet pubblicati
+> (`registry/registry.json`) per i valori correnti.
+
 ---
 
 ## 1. Emissioni GHG — Città italiane vs mondiali
@@ -134,10 +140,13 @@
 - `open-conto-annuale`: spesa sanitaria PA vs dati OECD
 
 ### 📊 Dataset pronti per pubblicazione
-Tutti e 5 i dataset sono processati e validati, pronti per:
+I 5 dataset analizzati sono processati e validati, pronti per:
 - Analisi SQL nel toolkit
 - Export parquet per DuckDB
 - Integrazione in dashboard o report
+
+> Nota: il repo conta ora **12** dataset (vedi README e `registry/registry.json`);
+> questo report resta l'analisi dei primi 5.
 
 ---
 

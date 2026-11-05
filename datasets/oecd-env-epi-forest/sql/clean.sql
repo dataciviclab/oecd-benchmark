@@ -5,7 +5,7 @@
 SELECT
     cast_int(TIME_PERIOD) AS anno,
     normalize_string(MEASURE) AS indicatore,
-    normalize_string("Measure") AS indicatore_label,
+    normalize_string(MEASURE_label) AS indicatore_label,
     normalize_string(UNIT_MEASURE) AS unita,
     cast_double(OBS_VALUE) AS valore
 FROM raw_input

@@ -11,7 +11,7 @@ SELECT
     cast_int(SUBSTR(normalize_string(TIME_PERIOD), 6, 2)) AS mese,
     normalize_string(TIME_PERIOD) AS periodo,
     normalize_string(REF_AREA) AS ref_area,
-    normalize_string("Reference area") AS paese,
+    normalize_string(REF_AREA_label) AS paese,
     normalize_string(MEASURE) AS misura,
     normalize_string(UNIT_MEASURE) AS unita,
     normalize_string(BASE_PER) AS base_periodo,

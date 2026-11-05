@@ -6,17 +6,17 @@
 SELECT
     cast_int(TIME_PERIOD) AS anno,
     normalize_string(REF_AREA) AS ref_area,
-    normalize_string("Reference area") AS paese,
+    normalize_string(REF_AREA_label) AS paese,
     normalize_string(TERRITORIAL_LEVEL) AS livello_territoriale,
     normalize_string(TERRITORIAL_TYPE) AS tipo_territorio,
     normalize_string(MEASURE) AS misura,
-    normalize_string("Measure") AS misura_label,
+    normalize_string(MEASURE_label) AS misura_label,
     normalize_string(ACTIVITY) AS attivita,
-    normalize_string("Activity") AS attivita_label,
+    normalize_string(ACTIVITY_label) AS attivita_label,
     normalize_string(PRICES) AS prezzi,
-    normalize_string("Prices") AS prezzi_label,
+    normalize_string(PRICES_label) AS prezzi_label,
     normalize_string(UNIT_MEASURE) AS unita,
-    normalize_string("Unit of measure") AS unita_label,
+    normalize_string(UNIT_MEASURE_label) AS unita_label,
     cast_double(OBS_VALUE) AS valore
 FROM raw_input
 WHERE TIME_PERIOD IS NOT NULL

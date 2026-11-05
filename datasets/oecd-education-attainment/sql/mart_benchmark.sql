@@ -1,6 +1,8 @@
 -- mart_benchmark.sql: Istruzione — Italia vs OCSE vs G7
 --
--- Confronto percentuale popolazione con istruzione terziaria
+-- Confronto percentuale popolazione con istruzione terziaria.
+-- operazione_statistica='MEAN' esclude gli errori standard (SE), che altrimenti
+-- finivano mescolati alle medie sulla stessa chiave.
 
 SELECT
     anno,
@@ -18,4 +20,5 @@ WHERE livello_territoriale = 'TL2'
   AND educazione = 'ISCED11_5T8'
   AND eta = 'Y25T64'
   AND sesso = '_T'
+  AND operazione_statistica = 'MEAN'
 ORDER BY anno, ref_area

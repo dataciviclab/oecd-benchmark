@@ -9,7 +9,7 @@ dataset:
   years: [2026]
   time_coverage:
     start_year: 2000
-    end_year: 2023
+    end_year: 2025
 
 raw:
   output_policy: overwrite
@@ -32,9 +32,11 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
     nullstr: "Not applicable"
-  required_columns: [anno, ref_area, paese, misura, unita, valore]
+  required_columns: [anno, ref_area, paese, misura, unita, tipo_famiglia, reddito_principale, reddito_secondo, stato_civile, valore]
   validate:
+    primary_key: [anno, ref_area, misura, unita, tipo_famiglia, reddito_principale, reddito_secondo, stato_civile]
     not_null: [anno, misura]
     min_rows: 50
 
@@ -48,9 +50,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, ref_area, misura, tipo_famiglia, unita]
         not_null: [anno, misura]
         min_rows: 20
       mart_benchmark:
+        primary_key: [anno, ref_area, misura, unita]
         not_null: [anno, paese]
         min_rows: 10
 

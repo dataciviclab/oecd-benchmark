@@ -32,8 +32,10 @@ clean:
     delim: ","
     encoding: utf-8
     header: true
+    all_varchar: true  # codici SDMX: evita sniffing errato (es. SEX=F → BOOLEAN)
   required_columns: [anno, fua_code, citta, misura, unita, livello, valore]
   validate:
+    primary_key: [anno, fua_code, misura, unita, livello]
     not_null: [anno, fua_code]
     min_rows: 50
 
@@ -47,9 +49,11 @@ mart:
   validate:
     table_rules:
       mart_italia:
+        primary_key: [anno, fua_code, misura, unita]
         not_null: [anno, fua_code, citta]
         min_rows: 30
       mart_benchmark:
+        primary_key: [anno, fua_code, misura, unita]
         not_null: [anno, citta]
         min_rows: 20
 

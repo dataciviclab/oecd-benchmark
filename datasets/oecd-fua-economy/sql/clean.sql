@@ -7,11 +7,11 @@
 SELECT
     cast_int(TIME_PERIOD) AS anno,
     normalize_string(REF_AREA) AS fua_code,
-    normalize_string("Reference area") AS citta,
+    normalize_string(REF_AREA_label) AS citta,
     normalize_string(MEASURE) AS misura,
-    normalize_string("Measure") AS misura_label,
+    normalize_string(MEASURE_label) AS misura_label,
     normalize_string(UNIT_MEASURE) AS unita,
-    normalize_string("Unit of measure") AS unita_label,
+    normalize_string(UNIT_MEASURE_label) AS unita_label,
     normalize_string(TERRITORIAL_LEVEL) AS livello,
     cast_double(OBS_VALUE) AS valore
 FROM raw_input
